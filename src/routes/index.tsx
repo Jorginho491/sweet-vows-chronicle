@@ -53,7 +53,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero */}
-      <section className="relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-20 text-center">
+      <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-6 py-16 text-center">
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-secondary/60 via-background to-background" />
 
         <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-muted-foreground">
