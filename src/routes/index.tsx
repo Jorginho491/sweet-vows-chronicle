@@ -466,6 +466,7 @@ function Index() {
       </section>
 
       <footer className="border-t border-border px-6 py-12 text-center">
+        {null}
         <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
           Jorge &amp; Heid
         </p>
