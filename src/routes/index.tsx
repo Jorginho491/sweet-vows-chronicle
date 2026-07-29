@@ -1,10 +1,99 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import casal1 from "../assets/casal-1.jpg.asset.json";
 import casal2 from "../assets/casal-2.jpg.asset.json";
 
 const WHATSAPP = "258866694467";
 const EMAIL = "chambulejorge6@gmail.com";
+const WEDDING_DATE = new Date("2026-08-08T16:00:00");
+const GREETINGS_KEY = "jorge-heid-felicitacoes";
+
+const VERSES = [
+  {
+    text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Tudo sofre, tudo crê, tudo espera, tudo suporta.",
+    ref: "1 Coríntios 13:4,7",
+  },
+  {
+    text: "Portanto, o que Deus uniu, ninguém o separe.",
+    ref: "Mateus 19:6",
+  },
+  {
+    text: "Assim já não são dois, mas sim uma só carne.",
+    ref: "Marcos 10:8",
+  },
+  {
+    text: "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito.",
+    ref: "Colossenses 3:14",
+  },
+  {
+    text: "Quem encontra uma esposa encontra algo excelente; recebeu uma bênção do Senhor.",
+    ref: "Provérbios 18:22",
+  },
+  {
+    text: "As muitas águas não conseguem apagar o amor; os rios não conseguem levá-lo na correnteza.",
+    ref: "Cânticos 8:7",
+  },
+];
+
+type Greeting = { id: string; name: string; message: string; date: string };
+
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function useCountdown(target: Date) {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (now === null) return null;
+  const diff = Math.max(0, target.getTime() - now);
+  return {
+    dias: Math.floor(diff / 86400000),
+    horas: Math.floor((diff / 3600000) % 24),
+    minutos: Math.floor((diff / 60000) % 60),
+    segundos: Math.floor((diff / 1000) % 60),
+  };
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
