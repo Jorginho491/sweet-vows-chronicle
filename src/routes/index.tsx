@@ -18,20 +18,8 @@ const VERSES = [
     ref: "Mateus 19:6",
   },
   {
-    text: "Assim já não são dois, mas sim uma só carne.",
-    ref: "Marcos 10:8",
-  },
-  {
     text: "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito.",
     ref: "Colossenses 3:14",
-  },
-  {
-    text: "Quem encontra uma esposa encontra algo excelente; recebeu uma bênção do Senhor.",
-    ref: "Provérbios 18:22",
-  },
-  {
-    text: "As muitas águas não conseguem apagar o amor; os rios não conseguem levá-lo na correnteza.",
-    ref: "Cânticos 8:7",
   },
 ];
 
