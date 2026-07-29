@@ -189,14 +189,17 @@ function Index() {
         <img
           src={casal1.url}
           alt="Jorge e Heid, os noivos, num jardim"
-          className="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
+          className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
 
-        <div className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 py-24 text-center">
+        <div className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 py-24 text-center [&_.reveal.is-visible]:[animation-duration:1.2s]">
+          <Reveal>
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
             Com alegria, convidamos você
           </p>
+          </Reveal>
+          <Reveal delay={200}>
           <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
             Jorge
             <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
@@ -204,6 +207,8 @@ function Index() {
             </span>
             Heid
           </h1>
+          </Reveal>
+          <Reveal delay={400}>
           <div className="mt-10 h-px w-24 bg-white/40" />
           <p className="mt-8 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
             08 · 08 · 2026
@@ -211,29 +216,73 @@ function Index() {
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/70">
             South Beach
           </p>
+          </Reveal>
+          <Reveal delay={600}>
           <a
             href="#rsvp"
-            className="mt-14 inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:bg-white hover:text-black"
+            className="animate-float-slow mt-14 inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black"
           >
             Confirmar presença
           </a>
+          </Reveal>
         </div>
       </header>
+
+      {/* Contagem regressiva */}
+      <section className="border-b border-border bg-secondary/40 px-6 py-16">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+            Contagem regressiva
+          </p>
+          <h2 className="mt-4 font-serif text-3xl font-light text-foreground sm:text-4xl">
+            Faltam poucos dias para o «sim»
+          </h2>
+          <div className="mt-10 grid grid-cols-4 gap-3 sm:gap-6">
+            {(
+              [
+                ["Dias", countdown?.dias],
+                ["Horas", countdown?.horas],
+                ["Minutos", countdown?.minutos],
+                ["Segundos", countdown?.segundos],
+              ] as const
+            ).map(([label, value]) => (
+              <div
+                key={label}
+                className="rounded-sm border border-border bg-card px-2 py-6 shadow-sm transition-transform duration-300 hover:-translate-y-1"
+              >
+                <p className="font-serif text-3xl font-light tabular-nums text-foreground sm:text-5xl">
+                  {value === undefined ? "—" : String(value).padStart(2, "0")}
+                </p>
+                <p className="mt-2 text-[0.6rem] uppercase tracking-[0.25em] text-muted-foreground sm:text-xs">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
 
       {/* História */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-          <div className="relative mx-auto w-full max-w-md">
-            <div className="overflow-hidden rounded-sm shadow-2xl">
+          <Reveal className="relative mx-auto w-full max-w-md">
+            <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[999px_999px_16px_16px] bg-secondary/60" />
+            <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-primary/25" />
+            <div className="absolute -bottom-5 -right-5 h-32 w-32 rounded-full border border-primary/20" />
+            <div className="group relative overflow-hidden rounded-[999px_999px_8px_8px] border border-border shadow-2xl ring-1 ring-primary/10">
               <img
                 src={casal2.url}
                 alt="Jorge e Heid em ensaio pré-casamento"
                 loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover grayscale-[15%] transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:grayscale-0"
               />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+              <p className="absolute inset-x-0 bottom-6 text-center font-serif text-2xl font-light italic text-white/95">
+                Jorge &amp; Heid
+              </p>
             </div>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={150}>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
               A nossa história
             </p>
@@ -250,6 +299,34 @@ function Index() {
               Agora, rodeados de quem amam, escolhem dizer «sim» diante do mar.
               Este convite é o nosso pedido para que estejas connosco nesse dia.
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Versículos */}
+      <section className="relative overflow-hidden border-y border-border px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <Reveal className="text-center">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+              Palavra de Deus
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+              Versículos sobre amor e casamento
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {VERSES.map((v, i) => (
+              <Reveal key={v.ref} delay={i * 120}>
+                <figure className="h-full rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+                  <blockquote className="font-serif text-lg font-light italic leading-relaxed text-card-foreground">
+                    «{v.text}»
+                  </blockquote>
+                  <figcaption className="mt-5 text-[0.65rem] uppercase tracking-[0.3em] text-primary">
+                    {v.ref}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
