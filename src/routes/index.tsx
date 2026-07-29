@@ -294,22 +294,21 @@ function Index() {
       {/* Versículos */}
       <section className="relative overflow-hidden border-y border-border px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal className="text-center">
-            <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
-              Palavra de Deus
-            </p>
-            <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-              Versículos sobre amor e casamento
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             {VERSES.map((v, i) => (
-              <Reveal key={v.ref} delay={i * 120}>
-                <figure className="h-full rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-                  <blockquote className="font-serif text-lg font-light italic leading-relaxed text-card-foreground">
-                    «{v.text}»
+              <Reveal key={v.ref} delay={i * 150} className="h-full">
+                <figure className="group relative flex h-full flex-col items-center px-6 py-10 text-center">
+                  <span
+                    aria-hidden
+                    className="font-serif text-6xl leading-none text-primary/25 transition-colors duration-500 group-hover:text-primary/50"
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-2 font-serif text-xl font-light italic leading-relaxed text-foreground/90">
+                    {v.text}
                   </blockquote>
-                  <figcaption className="mt-5 text-[0.65rem] uppercase tracking-[0.3em] text-primary">
+                  <span className="mt-7 h-px w-10 bg-primary/40 transition-all duration-500 group-hover:w-20" />
+                  <figcaption className="mt-5 text-[0.6rem] uppercase tracking-[0.35em] text-primary">
                     {v.ref}
                   </figcaption>
                 </figure>
