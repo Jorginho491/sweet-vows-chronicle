@@ -18,20 +18,8 @@ const VERSES = [
     ref: "Mateus 19:6",
   },
   {
-    text: "Assim já não são dois, mas sim uma só carne.",
-    ref: "Marcos 10:8",
-  },
-  {
     text: "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito.",
     ref: "Colossenses 3:14",
-  },
-  {
-    text: "Quem encontra uma esposa encontra algo excelente; recebeu uma bênção do Senhor.",
-    ref: "Provérbios 18:22",
-  },
-  {
-    text: "As muitas águas não conseguem apagar o amor; os rios não conseguem levá-lo na correnteza.",
-    ref: "Cânticos 8:7",
   },
 ];
 
@@ -306,22 +294,21 @@ function Index() {
       {/* Versículos */}
       <section className="relative overflow-hidden border-y border-border px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal className="text-center">
-            <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
-              Palavra de Deus
-            </p>
-            <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-              Versículos sobre amor e casamento
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             {VERSES.map((v, i) => (
-              <Reveal key={v.ref} delay={i * 120}>
-                <figure className="h-full rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
-                  <blockquote className="font-serif text-lg font-light italic leading-relaxed text-card-foreground">
-                    «{v.text}»
+              <Reveal key={v.ref} delay={i * 150} className="h-full">
+                <figure className="group relative flex h-full flex-col items-center px-6 py-10 text-center">
+                  <span
+                    aria-hidden
+                    className="font-serif text-6xl leading-none text-primary/25 transition-colors duration-500 group-hover:text-primary/50"
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-2 font-serif text-xl font-light italic leading-relaxed text-foreground/90">
+                    {v.text}
                   </blockquote>
-                  <figcaption className="mt-5 text-[0.65rem] uppercase tracking-[0.3em] text-primary">
+                  <span className="mt-7 h-px w-10 bg-primary/40 transition-all duration-500 group-hover:w-20" />
+                  <figcaption className="mt-5 text-[0.6rem] uppercase tracking-[0.35em] text-primary">
                     {v.ref}
                   </figcaption>
                 </figure>
@@ -543,18 +530,96 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-12 text-center">
-        <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
-          Jorge &amp; Heid
-        </p>
-        <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-          08 · 08 · 2026 — South Beach
-        </p>
-        <p className="mt-6 text-xs text-muted-foreground">Contamos com a sua presença.</p>
+      <footer className="border-t border-border px-6 py-16">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
+            Jorge &amp; Heid
+          </p>
+          <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            08 · 08 · 2026 — South Beach
+          </p>
+          <p className="mt-6 text-xs text-muted-foreground">Contamos com a sua presença.</p>
+
+          <div className="mx-auto mt-12 h-px w-24 bg-border" />
+
+          <div className="mt-12 flex flex-col items-center gap-5">
+            <p className="text-[0.6rem] uppercase tracking-[0.35em] text-muted-foreground">
+              Desenvolvido por
+            </p>
+            <p className="font-serif text-xl font-light tracking-wide text-foreground">
+              Studio Mula
+              <span className="mx-3 text-primary/60">|</span>
+              JC
+            </p>
+
+            <nav aria-label="Redes sociais do Studio Mula" className="mt-2 flex items-center gap-3">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={s.label}
+                  title={s.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </nav>
+
+            <p className="mt-4 text-[0.65rem] text-muted-foreground">
+              © {new Date().getFullYear()} Studio Mula | JC — Convites digitais
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
 }
+
+const SOCIALS = [
+  {
+    label: "WhatsApp",
+    href: `https://wa.me/${WHATSAPP}`,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+        <path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.6c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.8.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z" />
+        <path d="M12 2A10 10 0 0 0 3.5 17.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4" aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    ),
+  },
+  {
+    label: "Facebook",
+    href: "https://facebook.com",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+        <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.2-1.5 1.5-1.5h1.7V4a22 22 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.5v3h2.8v8z" />
+      </svg>
+    ),
+  },
+  {
+    label: "E-mail",
+    href: `mailto:${EMAIL}`,
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4" aria-hidden>
+        <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+        <path d="m3.5 7 8.5 6 8.5-6" />
+      </svg>
+    ),
+  },
+];
 
 function DetailCard({ label, value, sub }: { label: string; value: string; sub: string }) {
   return (
