@@ -122,6 +122,45 @@ function Index() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState("1");
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
+  const countdown = useCountdown(WEDDING_DATE);
+
+  const [greetings, setGreetings] = useState<Greeting[]>([]);
+  const [gName, setGName] = useState("");
+  const [gMessage, setGMessage] = useState("");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(GREETINGS_KEY);
+      if (raw) setGreetings(JSON.parse(raw));
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const submitGreeting = () => {
+    if (!gName.trim() || !gMessage.trim()) return;
+    const entry: Greeting = {
+      id: `${Date.now()}`,
+      name: gName.trim(),
+      message: gMessage.trim(),
+      date: new Date().toLocaleDateString("pt-PT"),
+    };
+    const next = [entry, ...greetings];
+    setGreetings(next);
+    try {
+      localStorage.setItem(GREETINGS_KEY, JSON.stringify(next));
+    } catch {
+      /* ignore */
+    }
+    window.open(
+      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+        `Felicitações aos noivos Jorge & Heid\n\nDe: ${entry.name}\n"${entry.message}"`,
+      )}`,
+      "_blank",
+    );
+    setGName("");
+    setGMessage("");
+  };
 
   const message =
     `Confirmação de presença — Casamento Jorge & Heid\n\n` +
