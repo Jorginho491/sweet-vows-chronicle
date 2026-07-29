@@ -465,6 +465,84 @@ function Index() {
         </div>
       </section>
 
+      {/* Felicitações */}
+      <section
+        id="felicitacoes"
+        className="border-t border-border bg-secondary/30 px-6 py-24"
+      >
+        <div className="mx-auto max-w-3xl">
+          <Reveal className="text-center">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+              Mural de carinho
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+              Felicitações aos noivos
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Deixe uma mensagem para Jorge &amp; Heid — ela será enviada para os
+              noivos e ficará guardada aqui no mural.
+            </p>
+          </Reveal>
+
+          <Reveal
+            delay={120}
+            className="mt-12 space-y-6 rounded-sm border border-border bg-card p-8 shadow-sm"
+          >
+            <div>
+              <label htmlFor="gname" className="block text-sm font-medium text-card-foreground">
+                O seu nome
+              </label>
+              <input
+                id="gname"
+                type="text"
+                value={gName}
+                onChange={(e) => setGName(e.target.value)}
+                placeholder="Ex.: Maria Silva"
+                className="mt-2 w-full rounded-sm border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              />
+            </div>
+            <div>
+              <label htmlFor="gmsg" className="block text-sm font-medium text-card-foreground">
+                A sua mensagem
+              </label>
+              <textarea
+                id="gmsg"
+                rows={4}
+                value={gMessage}
+                onChange={(e) => setGMessage(e.target.value)}
+                placeholder="Que Deus abençoe esta união…"
+                className="mt-2 w-full resize-none rounded-sm border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={submitGreeting}
+              disabled={!gName.trim() || !gMessage.trim()}
+              className="w-full rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Enviar felicitações
+            </button>
+          </Reveal>
+
+          {greetings.length > 0 && (
+            <div className="mt-10 space-y-4">
+              {greetings.map((g, i) => (
+                <Reveal key={g.id} delay={i * 80}>
+                  <article className="rounded-sm border border-border bg-card p-6 shadow-sm transition-transform duration-300 hover:-translate-y-0.5">
+                    <p className="font-serif text-lg font-light italic text-card-foreground">
+                      «{g.message}»
+                    </p>
+                    <p className="mt-3 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
+                      {g.name} · {g.date}
+                    </p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
       <footer className="border-t border-border px-6 py-12 text-center">
         <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
           Jorge &amp; Heid
