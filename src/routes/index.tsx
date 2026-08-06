@@ -2,11 +2,61 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import casal1 from "../assets/casal-1.jpg.asset.json";
 import casal2 from "../assets/casal-2.jpg.asset.json";
+import casal3 from "../assets/casal-3.jpg.asset.json";
+import casal4 from "../assets/casal-4.jpg.asset.json";
 
 const WHATSAPP = "258866694467";
 const EMAIL = "chambulejorge6@gmail.com";
-const WEDDING_DATE = new Date("2026-08-08T16:00:00");
-const GREETINGS_KEY = "jorge-heid-felicitacoes";
+const WEDDING_DATE = new Date("2026-09-12T10:00:00");
+const GREETINGS_KEY = "kevin-shelsea-felicitacoes";
+
+const GALLERY = [
+  { url: casal3.url, alt: "Kevin ergue Shelsea num jardim, em ensaio pré-casamento" },
+  { url: casal4.url, alt: "Kevin e Shelsea de mãos dadas entre a vegetação" },
+  { url: casal2.url, alt: "Kevin e Shelsea em ensaio fotográfico" },
+];
+
+const PROGRAM = [
+  {
+    time: "10:00",
+    title: "Cerimónia Religiosa",
+    place: "Paróquia São Joaquim",
+    detail: "Av. de Angola",
+  },
+  {
+    time: "15:00",
+    title: "Cerimónia Civil",
+    place: "Salão Mandota Eventos",
+    detail: "Nkobe",
+  },
+  {
+    time: "15:30",
+    title: "Sessão de Fotos & Welcome",
+    place: "Local da recepção",
+    detail: "Salão Mandota Eventos",
+  },
+  {
+    time: "16:30",
+    title: "Copo d'Água",
+    place: "Recepção",
+    detail: "Salão Mandota Eventos",
+  },
+];
+
+const PLACES = [
+  {
+    name: "Paróquia São Joaquim",
+    address: "Av. de Angola, Maputo",
+    note: "Cerimónia Religiosa · 10:00",
+    maps: "https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20S%C3%A3o%20Joaquim%20Av.%20de%20Angola%20Maputo",
+  },
+  {
+    name: "Salão Mandota Eventos",
+    address: "Nkobe, Maputo",
+    note: "Cerimónia Civil, Fotos & Copo d'Água · 15:00",
+    maps: "https://www.google.com/maps/search/?api=1&query=Mandota%20Eventos%20Nkobe%20Maputo",
+  },
+];
 
 const VERSES = [
   {
