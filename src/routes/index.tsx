@@ -136,17 +136,17 @@ function useCountdown(target: Date) {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Jorge & Heid — Casamento 08.08.2026" },
+      { title: "Kevin & Shelsea — Casamento 12.09.2026" },
       {
         name: "description",
         content:
-          "Convite para o casamento de Jorge e Heid, dia 08 de agosto de 2026, em South Beach. Confirme a sua presença.",
+          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
       },
-      { property: "og:title", content: "Jorge & Heid — Casamento 08.08.2026" },
+      { property: "og:title", content: "Kevin & Shelsea — Casamento 12.09.2026" },
       {
         property: "og:description",
         content:
-          "Convite para o casamento de Jorge e Heid, dia 08 de agosto de 2026, em South Beach.",
+          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
