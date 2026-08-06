@@ -453,7 +453,7 @@ function Index() {
           </h2>
           <p className="mt-5 text-muted-foreground">
             Confirme até <strong className="text-foreground">05 de setembro de 2026</strong> por
-            WhatsApp ou e-mail.
+            WhatsApp.
           </p>
         </div>
 
