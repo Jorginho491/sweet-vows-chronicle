@@ -365,16 +365,87 @@ function Index() {
             O grande dia
           </p>
           <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-            Detalhes da celebração
+            Programa do dia
           </h2>
-          <div className="mt-14 grid gap-10 sm:grid-cols-3">
-            <DetailCard label="Data" value="08 · 08 · 2026" sub="Sábado" />
-            <DetailCard label="Cerimónia" value="16:00" sub="Chegada às 15:30" />
-            <DetailCard label="Local" value="South Beach" sub="Cerimónia & Recepção" />
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            <DetailCard label="Data" value="12 · 09 · 2026" sub="Sábado" />
+            <DetailCard label="Início" value="10:00" sub="Cerimónia Religiosa" />
+            <DetailCard label="Cidade" value="Maputo" sub="Moçambique" />
           </div>
-          <p className="mt-14 text-sm uppercase tracking-[0.25em] text-muted-foreground">
+
+          <div className="relative mx-auto mt-16 max-w-2xl text-left">
+            <div className="absolute left-[4.5rem] top-2 bottom-2 hidden w-px bg-border sm:block" />
+            <ol className="space-y-4">
+              {PROGRAM.map((item, i) => (
+                <Reveal key={item.time + item.title} delay={i * 120}>
+                  <li className="group relative flex gap-5 rounded-sm border border-border bg-card p-6 shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:shadow-lg sm:gap-8">
+                    <div className="flex w-14 shrink-0 flex-col items-center sm:w-16">
+                      <span className="font-serif text-2xl font-light tabular-nums text-foreground">
+                        {item.time}
+                      </span>
+                      <span className="mt-3 h-2 w-2 rounded-full bg-primary/40 transition-colors duration-500 group-hover:bg-primary" />
+                    </div>
+                    <div className="border-l border-border pl-5 sm:pl-8">
+                      <h3 className="font-serif text-xl font-light text-card-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.place}</p>
+                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/80">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+
+          <p className="mt-16 text-sm uppercase tracking-[0.25em] text-muted-foreground">
             Traje formal · Cores claras
           </p>
+        </div>
+      </section>
+
+      {/* Direções */}
+      <section id="direcoes" className="mx-auto max-w-5xl px-6 py-24">
+        <Reveal className="text-center">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+            Como chegar
+          </p>
+          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+            Direções dos locais
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {PLACES.map((p, i) => (
+            <Reveal key={p.name} delay={i * 150}>
+              <article className="group flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5" aria-hidden>
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                </span>
+                <h3 className="mt-6 font-serif text-2xl font-light text-card-foreground">
+                  {p.name}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">{p.address}</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-[0.25em] text-primary">
+                  {p.note}
+                </p>
+                <a
+                  href={p.maps}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                >
+                  Ver direções
+                  <span aria-hidden>→</span>
+                </a>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
