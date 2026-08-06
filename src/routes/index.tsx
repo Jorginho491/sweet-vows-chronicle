@@ -520,39 +520,21 @@ function Index() {
             </div>
           )}
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            <button
-              type="button"
-              onClick={sendWhatsapp}
-              disabled={!ready}
-              className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Confirmar por WhatsApp
-            </button>
-            <button
-              type="button"
-              onClick={sendEmail}
-              disabled={!ready}
-              className="inline-flex items-center justify-center gap-2 rounded-sm border border-input bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Confirmar por e-mail
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={sendWhatsapp}
+            disabled={!ready}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Confirmar por WhatsApp
+          </button>
 
-          <div className="space-y-1 text-center text-xs text-muted-foreground">
-            <p>
-              WhatsApp:{" "}
-              <a className="text-foreground underline" href={`https://wa.me/${WHATSAPP}`}>
-                86 669 4467
-              </a>
-            </p>
-            <p>
-              E-mail:{" "}
-              <a className="text-foreground underline" href={`mailto:${EMAIL}`}>
-                {EMAIL}
-              </a>
-            </p>
-          </div>
+          <p className="text-center text-xs text-muted-foreground">
+            WhatsApp:{" "}
+            <a className="text-foreground underline" href={`https://wa.me/${WHATSAPP}`}>
+              84 988 9889
+            </a>
+          </p>
         </div>
       </section>
 
