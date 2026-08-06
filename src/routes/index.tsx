@@ -212,12 +212,6 @@ function Index() {
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
-  const sendEmail = () => {
-    if (!ready) return;
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "RSVP — Casamento Kevin & Shelsea",
-    )}&body=${encodeURIComponent(message)}`;
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
