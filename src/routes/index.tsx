@@ -459,7 +459,7 @@ function Index() {
             RSVP
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Confirme até <strong className="text-foreground">01 de agosto de 2026</strong> por
+            Confirme até <strong className="text-foreground">05 de setembro de 2026</strong> por
             WhatsApp ou e-mail.
           </p>
         </div>
@@ -577,7 +577,7 @@ function Index() {
               Felicitações aos noivos
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Deixe uma mensagem para Jorge &amp; Heid — ela será enviada para os
+              Deixe uma mensagem para Kevin &amp; Shelsea — ela será enviada para os
               noivos e ficará guardada aqui no mural.
             </p>
           </Reveal>
@@ -644,10 +644,10 @@ function Index() {
       <footer className="border-t border-border px-6 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
-            Jorge &amp; Heid
+            Kevin &amp; Shelsea
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            08 · 08 · 2026 — South Beach
+            12 · 09 · 2026 — Maputo
           </p>
           <p className="mt-6 text-xs text-muted-foreground">Contamos com a sua presença.</p>
 
