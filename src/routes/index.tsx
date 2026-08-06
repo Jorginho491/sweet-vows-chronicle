@@ -192,7 +192,7 @@ function Index() {
     }
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-        `Felicitações aos noivos Jorge & Heid\n\nDe: ${entry.name}\n"${entry.message}"`,
+        `Felicitações aos noivos Kevin & Shelsea\n\nDe: ${entry.name}\n"${entry.message}"`,
       )}`,
       "_blank",
     );
@@ -201,7 +201,7 @@ function Index() {
   };
 
   const message =
-    `Confirmação de presença — Casamento Jorge & Heid\n\n` +
+    `Confirmação de presença — Casamento Kevin & Shelsea\n\n` +
     `Nome: ${name.trim() || "—"}\n` +
     `Presença: ${attending === "sim" ? "Sim, estarei lá" : attending === "nao" ? "Infelizmente não poderei ir" : "—"}\n` +
     (attending === "sim" ? `Nº de convidados: ${guests}\n` : "");
@@ -216,7 +216,7 @@ function Index() {
   const sendEmail = () => {
     if (!ready) return;
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "RSVP — Casamento Jorge & Heid",
+      "RSVP — Casamento Kevin & Shelsea",
     )}&body=${encodeURIComponent(message)}`;
   };
 
