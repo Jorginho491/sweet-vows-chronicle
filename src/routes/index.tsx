@@ -2,11 +2,61 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import casal1 from "../assets/casal-1.jpg.asset.json";
 import casal2 from "../assets/casal-2.jpg.asset.json";
+import casal3 from "../assets/casal-3.jpg.asset.json";
+import casal4 from "../assets/casal-4.jpg.asset.json";
 
 const WHATSAPP = "258866694467";
 const EMAIL = "chambulejorge6@gmail.com";
-const WEDDING_DATE = new Date("2026-08-08T16:00:00");
-const GREETINGS_KEY = "jorge-heid-felicitacoes";
+const WEDDING_DATE = new Date("2026-09-12T10:00:00");
+const GREETINGS_KEY = "kevin-shelsea-felicitacoes";
+
+const GALLERY = [
+  { url: casal3.url, alt: "Kevin ergue Shelsea num jardim, em ensaio pré-casamento" },
+  { url: casal4.url, alt: "Kevin e Shelsea de mãos dadas entre a vegetação" },
+  { url: casal2.url, alt: "Kevin e Shelsea em ensaio fotográfico" },
+];
+
+const PROGRAM = [
+  {
+    time: "10:00",
+    title: "Cerimónia Religiosa",
+    place: "Paróquia São Joaquim",
+    detail: "Av. de Angola",
+  },
+  {
+    time: "15:00",
+    title: "Cerimónia Civil",
+    place: "Salão Mandota Eventos",
+    detail: "Nkobe",
+  },
+  {
+    time: "15:30",
+    title: "Sessão de Fotos & Welcome",
+    place: "Local da recepção",
+    detail: "Salão Mandota Eventos",
+  },
+  {
+    time: "16:30",
+    title: "Copo d'Água",
+    place: "Recepção",
+    detail: "Salão Mandota Eventos",
+  },
+];
+
+const PLACES = [
+  {
+    name: "Paróquia São Joaquim",
+    address: "Av. de Angola, Maputo",
+    note: "Cerimónia Religiosa · 10:00",
+    maps: "https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20S%C3%A3o%20Joaquim%20Av.%20de%20Angola%20Maputo",
+  },
+  {
+    name: "Salão Mandota Eventos",
+    address: "Nkobe, Maputo",
+    note: "Cerimónia Civil, Fotos & Copo d'Água · 15:00",
+    maps: "https://www.google.com/maps/search/?api=1&query=Mandota%20Eventos%20Nkobe%20Maputo",
+  },
+];
 
 const VERSES = [
   {
@@ -86,17 +136,17 @@ function useCountdown(target: Date) {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Jorge & Heid — Casamento 08.08.2026" },
+      { title: "Kevin & Shelsea — Casamento 12.09.2026" },
       {
         name: "description",
         content:
-          "Convite para o casamento de Jorge e Heid, dia 08 de agosto de 2026, em South Beach. Confirme a sua presença.",
+          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
       },
-      { property: "og:title", content: "Jorge & Heid — Casamento 08.08.2026" },
+      { property: "og:title", content: "Kevin & Shelsea — Casamento 12.09.2026" },
       {
         property: "og:description",
         content:
-          "Convite para o casamento de Jorge e Heid, dia 08 de agosto de 2026, em South Beach.",
+          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -142,7 +192,7 @@ function Index() {
     }
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-        `Felicitações aos noivos Jorge & Heid\n\nDe: ${entry.name}\n"${entry.message}"`,
+        `Felicitações aos noivos Kevin & Shelsea\n\nDe: ${entry.name}\n"${entry.message}"`,
       )}`,
       "_blank",
     );
@@ -151,7 +201,7 @@ function Index() {
   };
 
   const message =
-    `Confirmação de presença — Casamento Jorge & Heid\n\n` +
+    `Confirmação de presença — Casamento Kevin & Shelsea\n\n` +
     `Nome: ${name.trim() || "—"}\n` +
     `Presença: ${attending === "sim" ? "Sim, estarei lá" : attending === "nao" ? "Infelizmente não poderei ir" : "—"}\n` +
     (attending === "sim" ? `Nº de convidados: ${guests}\n` : "");
@@ -166,7 +216,7 @@ function Index() {
   const sendEmail = () => {
     if (!ready) return;
     window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "RSVP — Casamento Jorge & Heid",
+      "RSVP — Casamento Kevin & Shelsea",
     )}&body=${encodeURIComponent(message)}`;
   };
 
@@ -176,7 +226,7 @@ function Index() {
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
           src={casal1.url}
-          alt="Jorge e Heid, os noivos, num jardim"
+          alt="Kevin Cossa e Shelsea Paruque, os noivos, num jardim"
           className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
@@ -189,20 +239,23 @@ function Index() {
           </Reveal>
           <Reveal delay={200}>
           <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
-            Jorge
+            Kevin
             <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
               &
             </span>
-            Heid
+            Shelsea
           </h1>
+          <p className="mt-5 text-[0.65rem] uppercase tracking-[0.4em] text-white/60">
+            Kevin Cossa &nbsp;·&nbsp; Shelsea Paruque
+          </p>
           </Reveal>
           <Reveal delay={400}>
           <div className="mt-10 h-px w-24 bg-white/40" />
           <p className="mt-8 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
-            08 · 08 · 2026
+            12 · 09 · 2026
           </p>
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/70">
-            South Beach
+            Maputo · Moçambique
           </p>
           </Reveal>
           <Reveal delay={600}>
@@ -254,21 +307,7 @@ function Index() {
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal className="relative mx-auto w-full max-w-md">
-            <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[999px_999px_16px_16px] bg-secondary/60" />
-            <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-primary/25" />
-            <div className="absolute -bottom-5 -right-5 h-32 w-32 rounded-full border border-primary/20" />
-            <div className="group relative overflow-hidden rounded-[999px_999px_8px_8px] border border-border shadow-2xl ring-1 ring-primary/10">
-              <img
-                src={casal2.url}
-                alt="Jorge e Heid em ensaio pré-casamento"
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover grayscale-[15%] transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:grayscale-0"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-              <p className="absolute inset-x-0 bottom-6 text-center font-serif text-2xl font-light italic text-white/95">
-                Jorge &amp; Heid
-              </p>
-            </div>
+            <StoryGallery />
           </Reveal>
           <Reveal delay={150}>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
@@ -281,11 +320,12 @@ function Index() {
               Começou sem aviso: uma conversa que se estendeu para além do
               tempo, risos que ficaram e a sensação rara de já se conhecerem há
               muito. Entre planos partilhados e dias comuns tornados especiais,
-              Jorge e Heid perceberam que caminhavam na mesma direção.
+              Kevin e Shelsea perceberam que caminhavam na mesma direção.
             </p>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Agora, rodeados de quem amam, escolhem dizer «sim» diante do mar.
-              Este convite é o nosso pedido para que estejas connosco nesse dia.
+              Agora, rodeados de quem amam, escolhem dizer «sim» diante de Deus
+              e da família. Este convite é o nosso pedido para que estejas
+              connosco neste dia.
             </p>
           </Reveal>
         </div>
@@ -325,16 +365,87 @@ function Index() {
             O grande dia
           </p>
           <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-            Detalhes da celebração
+            Programa do dia
           </h2>
-          <div className="mt-14 grid gap-10 sm:grid-cols-3">
-            <DetailCard label="Data" value="08 · 08 · 2026" sub="Sábado" />
-            <DetailCard label="Cerimónia" value="16:00" sub="Chegada às 15:30" />
-            <DetailCard label="Local" value="South Beach" sub="Cerimónia & Recepção" />
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            <DetailCard label="Data" value="12 · 09 · 2026" sub="Sábado" />
+            <DetailCard label="Início" value="10:00" sub="Cerimónia Religiosa" />
+            <DetailCard label="Cidade" value="Maputo" sub="Moçambique" />
           </div>
-          <p className="mt-14 text-sm uppercase tracking-[0.25em] text-muted-foreground">
+
+          <div className="relative mx-auto mt-16 max-w-2xl text-left">
+            <div className="absolute left-[4.5rem] top-2 bottom-2 hidden w-px bg-border sm:block" />
+            <ol className="space-y-4">
+              {PROGRAM.map((item, i) => (
+                <Reveal key={item.time + item.title} delay={i * 120}>
+                  <li className="group relative flex gap-5 rounded-sm border border-border bg-card p-6 shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:shadow-lg sm:gap-8">
+                    <div className="flex w-14 shrink-0 flex-col items-center sm:w-16">
+                      <span className="font-serif text-2xl font-light tabular-nums text-foreground">
+                        {item.time}
+                      </span>
+                      <span className="mt-3 h-2 w-2 rounded-full bg-primary/40 transition-colors duration-500 group-hover:bg-primary" />
+                    </div>
+                    <div className="border-l border-border pl-5 sm:pl-8">
+                      <h3 className="font-serif text-xl font-light text-card-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.place}</p>
+                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/80">
+                        {item.detail}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+
+          <p className="mt-16 text-sm uppercase tracking-[0.25em] text-muted-foreground">
             Traje formal · Cores claras
           </p>
+        </div>
+      </section>
+
+      {/* Direções */}
+      <section id="direcoes" className="mx-auto max-w-5xl px-6 py-24">
+        <Reveal className="text-center">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+            Como chegar
+          </p>
+          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+            Direções dos locais
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {PLACES.map((p, i) => (
+            <Reveal key={p.name} delay={i * 150}>
+              <article className="group flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/25 text-primary transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5" aria-hidden>
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                </span>
+                <h3 className="mt-6 font-serif text-2xl font-light text-card-foreground">
+                  {p.name}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">{p.address}</p>
+                <p className="mt-1 text-[0.65rem] uppercase tracking-[0.25em] text-primary">
+                  {p.note}
+                </p>
+                <a
+                  href={p.maps}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                >
+                  Ver direções
+                  <span aria-hidden>→</span>
+                </a>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -348,7 +459,7 @@ function Index() {
             RSVP
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Confirme até <strong className="text-foreground">01 de agosto de 2026</strong> por
+            Confirme até <strong className="text-foreground">05 de setembro de 2026</strong> por
             WhatsApp ou e-mail.
           </p>
         </div>
@@ -466,7 +577,7 @@ function Index() {
               Felicitações aos noivos
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Deixe uma mensagem para Jorge &amp; Heid — ela será enviada para os
+              Deixe uma mensagem para Kevin &amp; Shelsea — ela será enviada para os
               noivos e ficará guardada aqui no mural.
             </p>
           </Reveal>
@@ -533,10 +644,10 @@ function Index() {
       <footer className="border-t border-border px-6 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
-            Jorge &amp; Heid
+            Kevin &amp; Shelsea
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            08 · 08 · 2026 — South Beach
+            12 · 09 · 2026 — Maputo
           </p>
           <p className="mt-6 text-xs text-muted-foreground">Contamos com a sua presença.</p>
 
@@ -629,6 +740,56 @@ function DetailCard({ label, value, sub }: { label: string; value: string; sub: 
       </p>
       <p className="mt-4 font-serif text-3xl font-light text-foreground">{value}</p>
       <p className="mt-2 text-sm text-muted-foreground">{sub}</p>
+    </div>
+  );
+}
+
+function StoryGallery() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((i) => (i + 1) % GALLERY.length), 4200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="relative">
+      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[999px_999px_16px_16px] bg-secondary/60" />
+      <div className="animate-float-slow absolute -left-5 -top-5 h-24 w-24 rounded-full border border-primary/25" />
+      <div className="absolute -bottom-5 -right-5 h-32 w-32 rounded-full border border-primary/20" />
+
+      <div className="group relative aspect-[4/5] overflow-hidden rounded-[999px_999px_8px_8px] border border-border shadow-2xl ring-1 ring-primary/10">
+        {GALLERY.map((img, i) => (
+          <img
+            key={img.url}
+            src={img.url}
+            alt={img.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            className={`absolute inset-0 h-full w-full object-cover object-[50%_30%] transition-all duration-[1600ms] ease-out ${
+              i === active
+                ? "scale-100 opacity-100 grayscale-0"
+                : "scale-110 opacity-0 grayscale"
+            }`}
+          />
+        ))}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+        <p className="absolute inset-x-0 bottom-10 text-center font-serif text-2xl font-light italic text-white/95">
+          Kevin &amp; Shelsea
+        </p>
+        <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2">
+          {GALLERY.map((img, i) => (
+            <button
+              key={img.url}
+              type="button"
+              aria-label={`Ver foto ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === active ? "w-7 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
