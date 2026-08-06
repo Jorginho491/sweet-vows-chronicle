@@ -5,8 +5,7 @@ import casal2 from "../assets/casal-2.jpg.asset.json";
 import casal3 from "../assets/casal-3.jpg.asset.json";
 import casal4 from "../assets/casal-4.jpg.asset.json";
 
-const WHATSAPP = "258866694467";
-const EMAIL = "chambulejorge6@gmail.com";
+const WHATSAPP = "258849889889";
 const WEDDING_DATE = new Date("2026-09-12T10:00:00");
 const GREETINGS_KEY = "kevin-shelsea-felicitacoes";
 
@@ -213,12 +212,6 @@ function Index() {
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
-  const sendEmail = () => {
-    if (!ready) return;
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      "RSVP — Casamento Kevin & Shelsea",
-    )}&body=${encodeURIComponent(message)}`;
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -460,7 +453,7 @@ function Index() {
           </h2>
           <p className="mt-5 text-muted-foreground">
             Confirme até <strong className="text-foreground">05 de setembro de 2026</strong> por
-            WhatsApp ou e-mail.
+            WhatsApp.
           </p>
         </div>
 
@@ -527,39 +520,21 @@ function Index() {
             </div>
           )}
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            <button
-              type="button"
-              onClick={sendWhatsapp}
-              disabled={!ready}
-              className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Confirmar por WhatsApp
-            </button>
-            <button
-              type="button"
-              onClick={sendEmail}
-              disabled={!ready}
-              className="inline-flex items-center justify-center gap-2 rounded-sm border border-input bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Confirmar por e-mail
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={sendWhatsapp}
+            disabled={!ready}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Confirmar por WhatsApp
+          </button>
 
-          <div className="space-y-1 text-center text-xs text-muted-foreground">
-            <p>
-              WhatsApp:{" "}
-              <a className="text-foreground underline" href={`https://wa.me/${WHATSAPP}`}>
-                86 669 4467
-              </a>
-            </p>
-            <p>
-              E-mail:{" "}
-              <a className="text-foreground underline" href={`mailto:${EMAIL}`}>
-                {EMAIL}
-              </a>
-            </p>
-          </div>
+          <p className="text-center text-xs text-muted-foreground">
+            WhatsApp:{" "}
+            <a className="text-foreground underline" href={`https://wa.me/${WHATSAPP}`}>
+              84 988 9889
+            </a>
+          </p>
         </div>
       </section>
 
@@ -717,16 +692,6 @@ const SOCIALS = [
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
         <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.2-1.5 1.5-1.5h1.7V4a22 22 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.5v3h2.8v8z" />
-      </svg>
-    ),
-  },
-  {
-    label: "E-mail",
-    href: `mailto:${EMAIL}`,
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-4 w-4" aria-hidden>
-        <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
-        <path d="m3.5 7 8.5 6 8.5-6" />
       </svg>
     ),
   },
