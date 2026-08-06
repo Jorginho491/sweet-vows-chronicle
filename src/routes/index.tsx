@@ -672,3 +672,53 @@ function DetailCard({ label, value, sub }: { label: string; value: string; sub: 
     </div>
   );
 }
+
+function StoryGallery() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((i) => (i + 1) % GALLERY.length), 4200);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="relative">
+      <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[999px_999px_16px_16px] bg-secondary/60" />
+      <div className="animate-float-slow absolute -left-5 -top-5 h-24 w-24 rounded-full border border-primary/25" />
+      <div className="absolute -bottom-5 -right-5 h-32 w-32 rounded-full border border-primary/20" />
+
+      <div className="group relative aspect-[4/5] overflow-hidden rounded-[999px_999px_8px_8px] border border-border shadow-2xl ring-1 ring-primary/10">
+        {GALLERY.map((img, i) => (
+          <img
+            key={img.url}
+            src={img.url}
+            alt={img.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            className={`absolute inset-0 h-full w-full object-cover object-[50%_30%] transition-all duration-[1600ms] ease-out ${
+              i === active
+                ? "scale-100 opacity-100 grayscale-0"
+                : "scale-110 opacity-0 grayscale"
+            }`}
+          />
+        ))}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+        <p className="absolute inset-x-0 bottom-10 text-center font-serif text-2xl font-light italic text-white/95">
+          Kevin &amp; Shelsea
+        </p>
+        <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2">
+          {GALLERY.map((img, i) => (
+            <button
+              key={img.url}
+              type="button"
+              aria-label={`Ver foto ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === active ? "w-7 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
