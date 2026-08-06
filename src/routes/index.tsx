@@ -226,7 +226,7 @@ function Index() {
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
           src={casal1.url}
-          alt="Jorge e Heid, os noivos, num jardim"
+          alt="Kevin Cossa e Shelsea Paruque, os noivos, num jardim"
           className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
@@ -239,20 +239,23 @@ function Index() {
           </Reveal>
           <Reveal delay={200}>
           <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
-            Jorge
+            Kevin
             <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
               &
             </span>
-            Heid
+            Shelsea
           </h1>
+          <p className="mt-5 text-[0.65rem] uppercase tracking-[0.4em] text-white/60">
+            Kevin Cossa &nbsp;·&nbsp; Shelsea Paruque
+          </p>
           </Reveal>
           <Reveal delay={400}>
           <div className="mt-10 h-px w-24 bg-white/40" />
           <p className="mt-8 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
-            08 · 08 · 2026
+            12 · 09 · 2026
           </p>
           <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/70">
-            South Beach
+            Maputo · Moçambique
           </p>
           </Reveal>
           <Reveal delay={600}>
