@@ -5,8 +5,7 @@ import casal2 from "../assets/casal-2.jpg.asset.json";
 import casal3 from "../assets/casal-3.jpg.asset.json";
 import casal4 from "../assets/casal-4.jpg.asset.json";
 
-const WHATSAPP = "258866694467";
-const EMAIL = "chambulejorge6@gmail.com";
+const WHATSAPP = "258849889889";
 const WEDDING_DATE = new Date("2026-09-12T10:00:00");
 const GREETINGS_KEY = "kevin-shelsea-felicitacoes";
 
