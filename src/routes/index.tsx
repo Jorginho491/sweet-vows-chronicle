@@ -307,21 +307,7 @@ function Index() {
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal className="relative mx-auto w-full max-w-md">
-            <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[999px_999px_16px_16px] bg-secondary/60" />
-            <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-primary/25" />
-            <div className="absolute -bottom-5 -right-5 h-32 w-32 rounded-full border border-primary/20" />
-            <div className="group relative overflow-hidden rounded-[999px_999px_8px_8px] border border-border shadow-2xl ring-1 ring-primary/10">
-              <img
-                src={casal2.url}
-                alt="Jorge e Heid em ensaio pré-casamento"
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover grayscale-[15%] transition-all duration-[1200ms] ease-out group-hover:scale-105 group-hover:grayscale-0"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-              <p className="absolute inset-x-0 bottom-6 text-center font-serif text-2xl font-light italic text-white/95">
-                Jorge &amp; Heid
-              </p>
-            </div>
+            <StoryGallery />
           </Reveal>
           <Reveal delay={150}>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
@@ -334,11 +320,12 @@ function Index() {
               Começou sem aviso: uma conversa que se estendeu para além do
               tempo, risos que ficaram e a sensação rara de já se conhecerem há
               muito. Entre planos partilhados e dias comuns tornados especiais,
-              Jorge e Heid perceberam que caminhavam na mesma direção.
+              Kevin e Shelsea perceberam que caminhavam na mesma direção.
             </p>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Agora, rodeados de quem amam, escolhem dizer «sim» diante do mar.
-              Este convite é o nosso pedido para que estejas connosco nesse dia.
+              Agora, rodeados de quem amam, escolhem dizer «sim» diante de Deus
+              e da família. Este convite é o nosso pedido para que estejas
+              connosco neste dia.
             </p>
           </Reveal>
         </div>
