@@ -73,9 +73,10 @@ const VERSES = [
 ];
 
 const MUSIC_TRACK = {
-  title: "Risk is All",
+  title: "Risk It All",
   artist: "Bruno Mars",
-  url: "https://www.youtube.com/results?search_query=Bruno+Mars+Risk+is+All",
+  videoId: "lY5V4hSLWY8",
+  url: "https://www.youtube.com/watch?v=lY5V4hSLWY8",
 };
 
 type Greeting = { id: string; name: string; message: string; date: string };
@@ -138,6 +139,57 @@ function useCountdown(target: Date) {
   };
 }
 
+function IntroOverlay({
+  opened,
+  onOpen,
+}: {
+  opened: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-black transition-opacity duration-700 ease-out ${opened ? "pointer-events-none opacity-0" : "opacity-100"}`}
+      aria-hidden={opened}
+    >
+      <img
+        src={casal1.url}
+        alt=""
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_35%]"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
+      <div className="px-6 text-center text-white">
+        <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
+          Kelvin &amp; Shelsea
+        </p>
+        <h1 className="mt-6 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
+          Kelvin
+          <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
+            &amp;
+          </span>
+          Shelsea
+        </h1>
+        <p className="mt-5 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
+          12 · 09 · 2026
+        </p>
+        <button
+          type="button"
+          onClick={onOpen}
+          className="animate-heart-beat mt-14 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:scale-105"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Abrir convite
+        </button>
+        <p className="mt-4 text-[0.6rem] uppercase tracking-[0.2em] text-white/60">
+          Toque para ouvir a música
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -165,6 +217,7 @@ function Index() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState("1");
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
+  const [opened, setOpened] = useState(false);
   const countdown = useCountdown(WEDDING_DATE);
 
   const [greetings, setGreetings] = useState<Greeting[]>([]);
@@ -221,6 +274,19 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <IntroOverlay opened={opened} onOpen={() => setOpened(true)} />
+      {opened && (
+        <iframe
+          width="0"
+          height="0"
+          src={`https://www.youtube.com/embed/${MUSIC_TRACK.videoId}?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=${MUSIC_TRACK.videoId}`}
+          title={`${MUSIC_TRACK.title} — ${MUSIC_TRACK.artist}`}
+          allow="autoplay; encrypted-media; picture-in-picture; web-share"
+          className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
+          loading="eager"
+        />
+      )}
+      {/* Hero */}
       {/* Hero */}
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
