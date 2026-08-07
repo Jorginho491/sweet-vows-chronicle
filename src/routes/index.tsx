@@ -165,6 +165,7 @@ function Index() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState("1");
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
+  const [opened, setOpened] = useState(false);
   const countdown = useCountdown(WEDDING_DATE);
 
   const [greetings, setGreetings] = useState<Greeting[]>([]);
