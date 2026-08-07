@@ -203,6 +203,19 @@
   animation: float-slow 6s ease-in-out infinite;
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal.is-visible {
@@ -212,7 +225,8 @@
 
   .animate-soft-zoom,
   .animate-heart-beat,
-  .animate-float-slow {
+  .animate-float-slow,
+  .animate-spin-slow {
     animation: none;
   }
 }
