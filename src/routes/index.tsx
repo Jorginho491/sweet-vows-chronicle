@@ -139,6 +139,57 @@ function useCountdown(target: Date) {
   };
 }
 
+function IntroOverlay({
+  opened,
+  onOpen,
+}: {
+  opened: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-black transition-opacity duration-700 ease-out ${opened ? "pointer-events-none opacity-0" : "opacity-100"}`}
+      aria-hidden={opened}
+    >
+      <img
+        src={casal1.url}
+        alt=""
+        className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_35%]"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
+      <div className="px-6 text-center text-white">
+        <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
+          Kelvin &amp; Shelsea
+        </p>
+        <h1 className="mt-6 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
+          Kelvin
+          <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
+            &amp;
+          </span>
+          Shelsea
+        </h1>
+        <p className="mt-5 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
+          12 · 09 · 2026
+        </p>
+        <button
+          type="button"
+          onClick={onOpen}
+          className="animate-heart-beat mt-14 inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:scale-105"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Abrir convite
+        </button>
+        <p className="mt-4 text-[0.6rem] uppercase tracking-[0.2em] text-white/60">
+          Toque para ouvir a música
+        </p>
+      </div>
+    </div>
+  );
+}
+
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
