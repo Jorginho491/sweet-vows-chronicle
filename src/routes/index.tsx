@@ -7,12 +7,12 @@ import casal4 from "../assets/casal-4.jpg.asset.json";
 
 const WHATSAPP = "258849889889";
 const WEDDING_DATE = new Date("2026-09-12T10:00:00");
-const GREETINGS_KEY = "kevin-shelsea-felicitacoes";
+const GREETINGS_KEY = "kelvin-shelsea-felicitacoes";
 
 const GALLERY = [
-  { url: casal3.url, alt: "Kevin ergue Shelsea num jardim, em ensaio pré-casamento" },
-  { url: casal4.url, alt: "Kevin e Shelsea de mãos dadas entre a vegetação" },
-  { url: casal2.url, alt: "Kevin e Shelsea em ensaio fotográfico" },
+  { url: casal3.url, alt: "Kelvin ergue Shelsea num jardim, em ensaio pré-casamento" },
+  { url: casal4.url, alt: "Kelvin e Shelsea de mãos dadas entre a vegetação" },
+  { url: casal2.url, alt: "Kelvin e Shelsea em ensaio fotográfico" },
 ];
 
 const PROGRAM = [
@@ -71,6 +71,12 @@ const VERSES = [
     ref: "Colossenses 3:14",
   },
 ];
+
+const MUSIC_TRACK = {
+  title: "Risk is All",
+  artist: "Bruno Mars",
+  url: "https://www.youtube.com/results?search_query=Bruno+Mars+Risk+is+All",
+};
 
 type Greeting = { id: string; name: string; message: string; date: string };
 
@@ -135,17 +141,17 @@ function useCountdown(target: Date) {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kevin & Shelsea — Casamento 12.09.2026" },
+      { title: "Kelvin & Shelsea — Casamento 12.09.2026" },
       {
         name: "description",
         content:
-          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
+          "Convite para o casamento de Kelvin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
       },
-      { property: "og:title", content: "Kevin & Shelsea — Casamento 12.09.2026" },
+      { property: "og:title", content: "Kelvin & Shelsea — Casamento 12.09.2026" },
       {
         property: "og:description",
         content:
-          "Convite para o casamento de Kevin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo.",
+          "Convite para o casamento de Kelvin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -191,7 +197,7 @@ function Index() {
     }
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-        `Felicitações aos noivos Kevin & Shelsea\n\nDe: ${entry.name}\n"${entry.message}"`,
+        `Felicitações aos noivos Kelvin & Shelsea\n\nDe: ${entry.name}\n"${entry.message}"`,
       )}`,
       "_blank",
     );
@@ -200,7 +206,7 @@ function Index() {
   };
 
   const message =
-    `Confirmação de presença — Casamento Kevin & Shelsea\n\n` +
+    `Confirmação de presença — Casamento Kelvin & Shelsea\n\n` +
     `Nome: ${name.trim() || "—"}\n` +
     `Presença: ${attending === "sim" ? "Sim, estarei lá" : attending === "nao" ? "Infelizmente não poderei ir" : "—"}\n` +
     (attending === "sim" ? `Nº de convidados: ${guests}\n` : "");
@@ -219,7 +225,7 @@ function Index() {
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
           src={casal1.url}
-          alt="Kevin Cossa e Shelsea Paruque, os noivos, num jardim"
+          alt="Kelvin Cossa e Shelsea Paruque, os noivos, num jardim"
           className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
@@ -232,14 +238,14 @@ function Index() {
           </Reveal>
           <Reveal delay={200}>
           <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
-            Kevin
+            Kelvin
             <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
               &
             </span>
             Shelsea
           </h1>
           <p className="mt-5 text-[0.65rem] uppercase tracking-[0.4em] text-white/60">
-            Kevin Cossa &nbsp;·&nbsp; Shelsea Paruque
+            Kelvin Cossa &nbsp;·&nbsp; Shelsea Paruque
           </p>
           </Reveal>
           <Reveal delay={400}>
@@ -313,7 +319,7 @@ function Index() {
               Começou sem aviso: uma conversa que se estendeu para além do
               tempo, risos que ficaram e a sensação rara de já se conhecerem há
               muito. Entre planos partilhados e dias comuns tornados especiais,
-              Kevin e Shelsea perceberam que caminhavam na mesma direção.
+              Kelvin e Shelsea perceberam que caminhavam na mesma direção.
             </p>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Agora, rodeados de quem amam, escolhem dizer «sim» diante de Deus
@@ -350,6 +356,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Música do dia */}
+      <MusicSection />
 
       {/* Detalhes */}
       <section className="border-y border-border bg-secondary/30 px-6 py-24">
@@ -552,7 +561,7 @@ function Index() {
               Felicitações aos noivos
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Deixe uma mensagem para Kevin &amp; Shelsea — ela será enviada para os
+              Deixe uma mensagem para Kelvin &amp; Shelsea — ela será enviada para os
               noivos e ficará guardada aqui no mural.
             </p>
           </Reveal>
@@ -619,7 +628,7 @@ function Index() {
       <footer className="border-t border-border px-6 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
-            Kevin &amp; Shelsea
+            Kelvin &amp; Shelsea
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
             12 · 09 · 2026 — Maputo
@@ -739,7 +748,7 @@ function StoryGallery() {
         ))}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
         <p className="absolute inset-x-0 bottom-10 text-center font-serif text-2xl font-light italic text-white/95">
-          Kevin &amp; Shelsea
+          Kelvin &amp; Shelsea
         </p>
         <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2">
           {GALLERY.map((img, i) => (
@@ -756,5 +765,67 @@ function StoryGallery() {
         </div>
       </div>
     </div>
+  );
+}
+
+function MusicSection() {
+  return (
+    <section className="relative overflow-hidden border-y border-border bg-secondary/20 px-6 py-24">
+      <div className="mx-auto max-w-4xl">
+        <Reveal className="text-center">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+            Trilha do grande dia
+          </p>
+          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+            Música do dia
+          </h2>
+        </Reveal>
+
+        <Reveal delay={150}>
+          <div className="mt-12 flex flex-col items-center gap-8 rounded-sm border border-border bg-card p-8 shadow-sm sm:flex-row sm:gap-10">
+            <div className="relative shrink-0">
+              <div className="animate-spin-slow h-36 w-36 rounded-full bg-gradient-to-br from-primary/20 via-secondary to-primary/30 p-1 shadow-xl ring-1 ring-border">
+                <div className="relative flex h-full w-full items-center justify-center rounded-full bg-card">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="h-10 w-10 text-primary/70" aria-hidden>
+                    <path d="M9 18V5l12-2v13" />
+                    <circle cx="6" cy="18" r="3" />
+                    <circle cx="18" cy="16" r="3" />
+                  </svg>
+                  <span className="absolute inset-0 m-auto h-10 w-10 rounded-full border border-primary/10" />
+                </div>
+              </div>
+              <div className="absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+
+            <div className="flex-1 text-center sm:text-left">
+              <p className="font-serif text-3xl font-light text-foreground sm:text-4xl">
+                {MUSIC_TRACK.title}
+              </p>
+              <p className="mt-2 text-sm uppercase tracking-[0.25em] text-muted-foreground">
+                {MUSIC_TRACK.artist}
+              </p>
+              <p className="mt-4 text-muted-foreground">
+                A canção que acompanha este passo — para ouvir antes, durante e depois do «sim».
+              </p>
+              <a
+                href={MUSIC_TRACK.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Ouvir no YouTube
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }
