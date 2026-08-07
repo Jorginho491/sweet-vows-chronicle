@@ -73,9 +73,10 @@ const VERSES = [
 ];
 
 const MUSIC_TRACK = {
-  title: "Risk is All",
+  title: "Risk It All",
   artist: "Bruno Mars",
-  url: "https://www.youtube.com/results?search_query=Bruno+Mars+Risk+is+All",
+  videoId: "lY5V4hSLWY8",
+  url: "https://www.youtube.com/watch?v=lY5V4hSLWY8",
 };
 
 type Greeting = { id: string; name: string; message: string; date: string };
