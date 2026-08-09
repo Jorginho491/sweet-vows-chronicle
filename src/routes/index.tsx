@@ -273,8 +273,8 @@ function Index() {
         <iframe
           width="0"
           height="0"
-          src={`https://www.youtube.com/embed/${MUSIC_TRACK.videoId}?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=${MUSIC_TRACK.videoId}`}
-          title={`${MUSIC_TRACK.title} — ${MUSIC_TRACK.artist}`}
+          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8`}
+          title="Risk It All — Bruno Mars"
           allow="autoplay; encrypted-media; picture-in-picture; web-share"
           className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
           loading="eager"
