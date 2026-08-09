@@ -76,7 +76,6 @@ const MUSIC_TRACK = {
   title: "Risk It All",
   artist: "Bruno Mars",
   videoId: "lY5V4hSLWY8",
-  url: "https://www.youtube.com/watch?v=lY5V4hSLWY8",
 };
 
 type Greeting = { id: string; name: string; message: string; date: string };
@@ -877,17 +876,6 @@ function MusicSection() {
               <p className="mt-4 text-muted-foreground">
                 A canção que acompanha este passo — para ouvir antes, durante e depois do «sim».
               </p>
-              <a
-                href={MUSIC_TRACK.url}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-6 inline-flex items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-                Ouvir no YouTube
-              </a>
             </div>
           </div>
         </Reveal>
