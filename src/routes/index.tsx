@@ -72,11 +72,6 @@ const VERSES = [
   },
 ];
 
-const MUSIC_TRACK = {
-  title: "Risk It All",
-  artist: "Bruno Mars",
-  videoId: "lY5V4hSLWY8",
-};
 
 type Greeting = { id: string; name: string; message: string; date: string };
 
@@ -278,8 +273,8 @@ function Index() {
         <iframe
           width="0"
           height="0"
-          src={`https://www.youtube.com/embed/${MUSIC_TRACK.videoId}?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=${MUSIC_TRACK.videoId}`}
-          title={`${MUSIC_TRACK.title} — ${MUSIC_TRACK.artist}`}
+          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8`}
+          title="Risk It All — Bruno Mars"
           allow="autoplay; encrypted-media; picture-in-picture; web-share"
           className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
           loading="eager"
@@ -423,9 +418,6 @@ function Index() {
       </section>
 
       {/* Música do dia */}
-      <MusicSection />
-
-      {/* Detalhes */}
       <section className="border-y border-border bg-secondary/30 px-6 py-24">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
@@ -833,53 +825,3 @@ function StoryGallery() {
   );
 }
 
-function MusicSection() {
-  return (
-    <section className="relative overflow-hidden border-y border-border bg-secondary/20 px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <Reveal className="text-center">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
-            Trilha do grande dia
-          </p>
-          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
-            Música do dia
-          </h2>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <div className="mt-12 flex flex-col items-center gap-8 rounded-sm border border-border bg-card p-8 shadow-sm sm:flex-row sm:gap-10">
-            <div className="relative shrink-0">
-              <div className="animate-spin-slow h-36 w-36 rounded-full bg-gradient-to-br from-primary/20 via-secondary to-primary/30 p-1 shadow-xl ring-1 ring-border">
-                <div className="relative flex h-full w-full items-center justify-center rounded-full bg-card">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="h-10 w-10 text-primary/70" aria-hidden>
-                    <path d="M9 18V5l12-2v13" />
-                    <circle cx="6" cy="18" r="3" />
-                    <circle cx="18" cy="16" r="3" />
-                  </svg>
-                  <span className="absolute inset-0 m-auto h-10 w-10 rounded-full border border-primary/10" />
-                </div>
-              </div>
-              <div className="absolute -bottom-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
-
-            <div className="flex-1 text-center sm:text-left">
-              <p className="font-serif text-3xl font-light text-foreground sm:text-4xl">
-                {MUSIC_TRACK.title}
-              </p>
-              <p className="mt-2 text-sm uppercase tracking-[0.25em] text-muted-foreground">
-                {MUSIC_TRACK.artist}
-              </p>
-              <p className="mt-4 text-muted-foreground">
-                A canção que acompanha este passo — para ouvir antes, durante e depois do «sim».
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
