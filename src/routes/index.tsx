@@ -273,7 +273,7 @@ function Index() {
         <iframe
           width="0"
           height="0"
-          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8`}
+          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8&start=60`}
           title="Risk It All — Bruno Mars"
           allow="autoplay; encrypted-media; picture-in-picture; web-share"
           className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
@@ -699,12 +699,12 @@ function Index() {
               Desenvolvido por
             </p>
             <p className="font-serif text-xl font-light tracking-wide text-foreground">
-              Studio Mula
+              Mula Studio
               <span className="mx-3 text-primary/60">|</span>
               JC
             </p>
 
-            <nav aria-label="Redes sociais do Studio Mula" className="mt-2 flex items-center gap-3">
+            <nav aria-label="Redes sociais do Mula Studio" className="mt-2 flex items-center gap-3">
               {SOCIALS.map((s) => (
                 <a
                   key={s.label}
@@ -721,7 +721,7 @@ function Index() {
             </nav>
 
             <p className="mt-4 text-[0.65rem] text-muted-foreground">
-              © {new Date().getFullYear()} Studio Mula | JC — Convites digitais
+              © {new Date().getFullYear()} Mula Studio | JC — Convites digitais
             </p>
           </div>
         </div>
