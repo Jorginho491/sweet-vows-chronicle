@@ -183,6 +183,42 @@ function IntroOverlay({
   );
 }
 
+function MusicButton({
+  iframeRef,
+  isPlaying,
+  onToggle,
+}: {
+  iframeRef: React.RefObject<HTMLIFrameElement | null>;
+  isPlaying: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-label={isPlaying ? "Pausar música" : "Tocar música"}
+      className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-black/65 px-3.5 py-2.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-black/85"
+    >
+      {isPlaying ? (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+          <rect x="6" y="4" width="4" height="16" rx="1" />
+          <rect x="14" y="4" width="4" height="16" rx="1" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      )}
+      <span>{isPlaying ? "Pausar" : "Tocar"}</span>
+    </button>
+  );
+}
+
+
+
+
+
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -212,11 +248,14 @@ function Index() {
   const [guests, setGuests] = useState("1");
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
   const [opened, setOpened] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const countdown = useCountdown(WEDDING_DATE);
 
   const [greetings, setGreetings] = useState<Greeting[]>([]);
   const [gName, setGName] = useState("");
   const [gMessage, setGMessage] = useState("");
+
 
   useEffect(() => {
     try {
@@ -265,21 +304,44 @@ function Index() {
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const toggleMusic = () => {
+    // eslint-disable-next-line no-console
+    console.log("toggleMusic", iframeRef.current, isPlaying);
+    const iframe = iframeRef.current;
+    if (!iframe?.contentWindow) return;
+    const command = isPlaying ? "pauseVideo" : "playVideo";
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: command, args: "" }),
+      "*",
+    );
+    setIsPlaying((p) => !p);
+  };
+
+
+
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <IntroOverlay opened={opened} onOpen={() => setOpened(true)} />
       {opened && (
         <iframe
+          ref={iframeRef}
           width="0"
           height="0"
-          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8&start=60`}
+          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8&start=60&enablejsapi=1`}
           title="Risk It All — Bruno Mars"
           allow="autoplay; encrypted-media; picture-in-picture; web-share"
           className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
           loading="eager"
         />
       )}
+      <MusicButton
+        iframeRef={iframeRef}
+        isPlaying={isPlaying}
+        onToggle={toggleMusic}
+      />
+
       {/* Hero */}
       {/* Hero */}
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
