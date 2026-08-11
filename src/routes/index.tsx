@@ -305,8 +305,6 @@ function Index() {
   };
 
   const toggleMusic = () => {
-    // eslint-disable-next-line no-console
-    console.log("toggleMusic", iframeRef.current, isPlaying);
     const iframe = iframeRef.current;
     if (!iframe?.contentWindow) return;
     const command = isPlaying ? "pauseVideo" : "playVideo";
@@ -316,6 +314,7 @@ function Index() {
     );
     setIsPlaying((p) => !p);
   };
+
 
 
 
