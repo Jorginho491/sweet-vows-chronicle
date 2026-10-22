@@ -1,77 +1,105 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import casal1 from "../assets/casal-1.jpg.asset.json";
-import casal2 from "../assets/casal-2.jpg.asset.json";
-import casal3 from "../assets/casal-3.jpg.asset.json";
-import casal4 from "../assets/casal-4.jpg.asset.json";
+import capa from "../assets/capa-adelina-henrique.jpg.asset.json";
+import gA from "../assets/adelina-galeria-a.jpg.asset.json";
+import gB from "../assets/adelina-galeria-b.jpg.asset.json";
+import gC from "../assets/adelina-galeria-c.jpg.asset.json";
+import gD from "../assets/adelina-galeria-d_2.jpg.asset.json";
+import gE from "../assets/adelina-galeria-e.jpg.asset.json";
 
 const WHATSAPP = "258849889889";
-const WEDDING_DATE = new Date("2026-09-12T10:00:00");
-const GREETINGS_KEY = "kelvin-shelsea-felicitacoes";
+const WEDDING_DATE = new Date("2026-12-05T09:00:00");
+const MUSIC_DELAY_MS = 20000;
+const GREETINGS_KEY = "adelina-henrique-felicitacoes";
 
 const GALLERY = [
-  { url: casal3.url, alt: "Kelvin ergue Shelsea num jardim, em ensaio pré-casamento" },
-  { url: casal4.url, alt: "Kelvin e Shelsea de mãos dadas entre a vegetação" },
-  { url: casal2.url, alt: "Kelvin e Shelsea em ensaio fotográfico" },
+  { url: gA.url, alt: "Adelina e Henrique a rir, de mãos dadas, junto ao lago" },
+  { url: gB.url, alt: "Adelina e Henrique no jardim, ao lado do lago" },
+  { url: gC.url, alt: "Adelina e Henrique a caminhar entre as palmeiras do jardim" },
+  { url: gD.url, alt: "Adelina debruçada sobre Henrique, sentado num tronco" },
+  { url: gE.url, alt: "Adelina e Henrique abraçados debaixo da árvore" },
 ];
 
 const PROGRAM = [
   {
-    time: "10:00",
+    time: "09:00",
     title: "Cerimónia Religiosa",
-    place: "Paróquia São Joaquim",
-    detail: "Av. de Angola",
+    place: "Igreja Sé Catedral",
+    detail: "Maputo",
   },
   {
-    time: "15:00",
+    time: "—",
     title: "Cerimónia Civil",
-    place: "Salão Mandota Eventos",
-    detail: "Nkobe",
+    place: "Sé Catedral",
+    detail: "Após a cerimónia religiosa",
   },
   {
-    time: "15:30",
-    title: "Sessão de Fotos & Welcome",
-    place: "Local da recepção",
-    detail: "Salão Mandota Eventos",
+    time: "12:00",
+    title: "Welcome Drink",
+    place: "Salão Villa Luísa",
+    detail: "Recepção dos convidados",
   },
   {
-    time: "16:30",
+    time: "12:00",
+    title: "Sessão de Fotos",
+    place: "Salão Villa Luísa",
+    detail: "Registos do grande dia",
+  },
+  {
+    time: "13:00",
     title: "Copo d'Água",
-    place: "Recepção",
-    detail: "Salão Mandota Eventos",
+    place: "Salão Villa Luísa",
+    detail: "Recepção",
+  },
+  {
+    time: "17:00",
+    title: "Abertura do Salão",
+    place: "Salão Villa Luísa",
+    detail: "Festa com os convidados",
+  },
+  {
+    time: "20:00",
+    title: "Lançamento do Buquê",
+    place: "Salão Villa Luísa",
+    detail: "Momento especial",
+  },
+  {
+    time: "22:00",
+    title: "Fim",
+    place: "Salão Villa Luísa",
+    detail: "Encerramento",
   },
 ];
 
 const PLACES = [
   {
-    name: "Paróquia São Joaquim",
-    address: "Av. de Angola, Maputo",
-    note: "Cerimónia Religiosa · 10:00",
-    maps: "https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20S%C3%A3o%20Joaquim%20Av.%20de%20Angola%20Maputo",
+    name: "Igreja Sé Catedral",
+    address: "Praça da Independência, Maputo",
+    note: "Cerimónia Religiosa & Civil · 09:00",
+    maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
   },
   {
-    name: "Salão Mandota Eventos",
-    address: "Nkobe, Maputo",
-    note: "Cerimónia Civil, Fotos & Copo d'Água · 15:00",
-    maps: "https://www.google.com/maps/search/?api=1&query=Mandota%20Eventos%20Nkobe%20Maputo",
+    name: "Salão Villa Luísa",
+    address: "Maputo",
+    note: "Welcome drink, fotos, copo d'água & festa",
+    maps: "https://www.google.com/maps/search/?api=1&query=Villa%20Lu%C3%ADsa%20Maputo",
   },
 ];
 
 const VERSES = [
   {
-    text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Tudo sofre, tudo crê, tudo espera, tudo suporta.",
-    ref: "1 Coríntios 13:4,7",
+    text: "«Por esta razão, o homem deixará pai e mãe e se unirá à sua mulher, e os dois se tornarão uma só carne.»",
+    ref: "Mateus 19:5",
   },
   {
-    text: "Portanto, o que Deus uniu, ninguém o separe.",
-    ref: "Mateus 19:6",
+    text: "«…eis que o Senhor está entre mim e ti, eternamente.»",
+    ref: "1 Samuel 20:23",
   },
   {
-    text: "Acima de tudo, porém, revistam-se do amor, que é o elo perfeito.",
-    ref: "Colossenses 3:14",
+    text: "«Para onde tu fores, eu irei; onde tu repousares, eu repousarei. O teu povo será o meu povo, e o teu Deus será o meu Deus.»",
+    ref: "Rute 1:16-17",
   },
 ];
-
 
 type Greeting = { id: string; name: string; message: string; date: string };
 
@@ -146,24 +174,24 @@ function IntroOverlay({
       aria-hidden={opened}
     >
       <img
-        src={casal1.url}
+        src={capa.url}
         alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_35%]"
+        className="animate-soft-zoom absolute inset-0 -z-10 h-full w-full object-cover object-[50%_30%]"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
       <div className="px-6 text-center text-white">
         <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
-          Kelvin &amp; Shelsea
+          Adelina &amp; Henrique
         </p>
         <h1 className="mt-6 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
-          Kelvin
+          Adelina
           <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
             &amp;
           </span>
-          Shelsea
+          Henrique
         </h1>
         <p className="mt-5 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
-          12 · 09 · 2026
+          05 · 12 · 2026
         </p>
         <button
           type="button"
@@ -176,7 +204,7 @@ function IntroOverlay({
           Abrir convite
         </button>
         <p className="mt-4 text-[0.6rem] uppercase tracking-[0.2em] text-white/60">
-          Toque para ouvir a música
+          Toque para abrir · a música começa em instantes
         </p>
       </div>
     </div>
@@ -214,48 +242,42 @@ function MusicButton({
   );
 }
 
-
-
-
-
-
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Kelvin & Shelsea — Casamento 12.09.2026" },
+      { title: "Adelina & Henrique — Casamento 05.12.2026" },
       {
         name: "description",
         content:
-          "Convite para o casamento de Kelvin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
+          "Convite para o casamento de Adelina Zacarias Machai e Henrique Gilberto Langa, dia 05 de dezembro de 2026, em Maputo. Programa do dia e confirmação de presença.",
       },
-      { property: "og:title", content: "Kelvin & Shelsea — Casamento 12.09.2026" },
+      { property: "og:title", content: "Adelina & Henrique — Casamento 05.12.2026" },
       {
         property: "og:description",
         content:
-          "Convite para o casamento de Kelvin Cossa e Shelsea Paruque, dia 12 de setembro de 2026, em Maputo.",
+          "Convite para o casamento de Adelina & Henrique, dia 05 de dezembro de 2026, em Maputo. Confirme a sua presença.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
-  component: Index,
+  component: AdelinaHenrique,
 });
 
-function Index() {
+function AdelinaHenrique() {
   const [name, setName] = useState("");
   const [guests, setGuests] = useState("1");
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
   const [opened, setOpened] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const autoStartRef = useRef<number | null>(null);
   const countdown = useCountdown(WEDDING_DATE);
 
   const [greetings, setGreetings] = useState<Greeting[]>([]);
   const [gName, setGName] = useState("");
   const [gMessage, setGMessage] = useState("");
-
 
   useEffect(() => {
     try {
@@ -265,6 +287,27 @@ function Index() {
       /* ignore */
     }
   }, []);
+
+  // A música começa cerca de 20 segundos depois de abrir o convite.
+  useEffect(() => {
+    if (!opened) return;
+    autoStartRef.current = window.setTimeout(() => {
+      autoStartRef.current = null;
+      const iframe = iframeRef.current;
+      if (!iframe?.contentWindow) return;
+      iframe.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func: "playVideo", args: "" }),
+        "*",
+      );
+      setIsPlaying(true);
+    }, MUSIC_DELAY_MS);
+    return () => {
+      if (autoStartRef.current !== null) {
+        clearTimeout(autoStartRef.current);
+        autoStartRef.current = null;
+      }
+    };
+  }, [opened]);
 
   const submitGreeting = () => {
     if (!gName.trim() || !gMessage.trim()) return;
@@ -283,7 +326,7 @@ function Index() {
     }
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
-        `Felicitações aos noivos Kelvin & Shelsea\n\nDe: ${entry.name}\n"${entry.message}"`,
+        `Felicitações aos noivos Adelina & Henrique\n\nDe: ${entry.name}\n"${entry.message}"`,
       )}`,
       "_blank",
     );
@@ -292,7 +335,7 @@ function Index() {
   };
 
   const message =
-    `Confirmação de presença — Casamento Kelvin & Shelsea\n\n` +
+    `Confirmação de presença — Casamento Adelina & Henrique\n\n` +
     `Nome: ${name.trim() || "—"}\n` +
     `Presença: ${attending === "sim" ? "Sim, estarei lá" : attending === "nao" ? "Infelizmente não poderei ir" : "—"}\n` +
     (attending === "sim" ? `Nº de convidados: ${guests}\n` : "");
@@ -305,6 +348,10 @@ function Index() {
   };
 
   const toggleMusic = () => {
+    if (autoStartRef.current !== null) {
+      clearTimeout(autoStartRef.current);
+      autoStartRef.current = null;
+    }
     const iframe = iframeRef.current;
     if (!iframe?.contentWindow) return;
     const command = isPlaying ? "pauseVideo" : "playVideo";
@@ -315,11 +362,6 @@ function Index() {
     setIsPlaying((p) => !p);
   };
 
-
-
-
-
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <IntroOverlay opened={opened} onOpen={() => setOpened(true)} />
@@ -328,8 +370,8 @@ function Index() {
           ref={iframeRef}
           width="0"
           height="0"
-          src={`https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&mute=0&playsinline=1&rel=0&loop=1&playlist=lY5V4hSLWY8&start=60&enablejsapi=1`}
-          title="Risk It All — Bruno Mars"
+          src="https://www.youtube.com/embed/aMoDRNT6fpc?mute=0&playsinline=1&rel=0&loop=1&playlist=aMoDRNT6fpc&enablejsapi=1"
+          title="Meu Amor — Lokua Kanza"
           allow="autoplay; encrypted-media; picture-in-picture; web-share"
           className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
           loading="eager"
@@ -342,49 +384,48 @@ function Index() {
       />
 
       {/* Hero */}
-      {/* Hero */}
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
-          src={casal1.url}
-          alt="Kelvin Cossa e Shelsea Paruque, os noivos, num jardim"
-          className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_35%]"
+          src={capa.url}
+          alt="Adelina Zacarias Machai e Henrique Gilberto Langa, os noivos, no ensaio pré-casamento"
+          className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_30%]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
 
         <div className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 py-24 text-center [&_.reveal.is-visible]:[animation-duration:1.2s]">
           <Reveal>
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
-            Com alegria, convidamos você
-          </p>
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
+              Com alegria, convidamos você
+            </p>
           </Reveal>
           <Reveal delay={200}>
-          <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
-            Kelvin
-            <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
-              &
-            </span>
-            Shelsea
-          </h1>
-          <p className="mt-5 text-[0.65rem] uppercase tracking-[0.4em] text-white/60">
-            Kelvin Cossa &nbsp;·&nbsp; Shelsea Paruque
-          </p>
+            <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
+              Adelina
+              <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
+                &amp;
+              </span>
+              Henrique
+            </h1>
+            <p className="mt-5 text-[0.65rem] uppercase tracking-[0.4em] text-white/60">
+              Adelina Zacarias Machai &nbsp;·&nbsp; Henrique Gilberto Langa
+            </p>
           </Reveal>
           <Reveal delay={400}>
-          <div className="mt-10 h-px w-24 bg-white/40" />
-          <p className="mt-8 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
-            12 · 09 · 2026
-          </p>
-          <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/70">
-            Maputo · Moçambique
-          </p>
+            <div className="mt-10 h-px w-24 bg-white/40" />
+            <p className="mt-8 text-lg font-light uppercase tracking-[0.3em] text-white/90 sm:text-xl">
+              05 · 12 · 2026
+            </p>
+            <p className="mt-3 text-sm uppercase tracking-[0.3em] text-white/70">
+              Maputo · Moçambique
+            </p>
           </Reveal>
           <Reveal delay={600}>
-          <a
-            href="#rsvp"
-            className="animate-float-slow mt-14 inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black"
-          >
-            Confirmar presença
-          </a>
+            <a
+              href="#rsvp"
+              className="animate-float-slow mt-14 inline-flex items-center justify-center rounded-full border border-white/60 px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black"
+            >
+              Confirmar presença
+            </a>
           </Reveal>
         </div>
       </header>
@@ -423,6 +464,37 @@ function Index() {
         </Reveal>
       </section>
 
+      {/* Mensagem aos convidados */}
+      <section className="mx-auto max-w-3xl px-6 py-24">
+        <Reveal className="text-center">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+            Mensagem aos convidados
+          </p>
+          <h2 className="mt-4 font-serif text-4xl font-light text-foreground sm:text-5xl">
+            A contagem começou
+          </h2>
+        </Reveal>
+        <Reveal delay={150}>
+          <div className="mt-10 rounded-sm border border-border bg-card p-8 text-center shadow-sm sm:p-12">
+            <p className="font-serif text-lg font-light italic leading-relaxed text-foreground/90 sm:text-xl">
+              «Queridos amigos e familiares, a contagem regressiva começou! Se
+              você está a receber esta mensagem, significa que é muito
+              importante para nós e que não podemos viver este dia sem a sua
+              presença. Escolhemos o dia 05 de dezembro de 2026, um sábado,
+              para celebrar o nosso amor. Reserve esta data na sua agenda, pois
+              nesse dia você tem um compromisso muito especial: comemorar
+              connosco!»
+            </p>
+            <p className="mt-8 text-sm uppercase tracking-[0.3em] text-muted-foreground">
+              Com carinho,
+            </p>
+            <p className="mt-3 font-serif text-2xl font-light text-foreground">
+              Adelina &amp; Henrique
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
       {/* História */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
@@ -434,19 +506,55 @@ function Index() {
               A nossa história
             </p>
             <h2 className="mt-4 font-serif text-4xl font-light leading-tight text-foreground sm:text-5xl">
-              De um simples encontro a uma vida inteira
+              Deus uniu os nossos caminhos
             </h2>
             <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-              Começou sem aviso: uma conversa que se estendeu para além do
-              tempo, risos que ficaram e a sensação rara de já se conhecerem há
-              muito. Entre planos partilhados e dias comuns tornados especiais,
-              Kelvin e Shelsea perceberam que caminhavam na mesma direção.
+              Deus uniu os nossos caminhos e, sobre a Sua bênção, uniremos as
+              nossas vidas para sempre. O amor uniu-nos e, diante de Deus e das
+              nossas famílias, diremos «sim».
             </p>
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
               Agora, rodeados de quem amam, escolhem dizer «sim» diante de Deus
               e da família. Este convite é o nosso pedido para que estejas
               connosco neste dia.
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Os noivos */}
+      <section className="border-y border-border bg-secondary/30 px-6 py-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <Reveal>
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
+              Os noivos
+            </p>
+            <div className="mt-10 grid gap-10 sm:grid-cols-2">
+              <div className="rounded-sm border border-border bg-card p-8 shadow-sm">
+                <p className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+                  Noiva
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-light text-foreground">
+                  Adelina Zacarias Machai
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Filha de Zacarias Temoteo Machai e Hermínia Julieta
+                  Francisco Tamele
+                </p>
+              </div>
+              <div className="rounded-sm border border-border bg-card p-8 shadow-sm">
+                <p className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+                  Noivo
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-light text-foreground">
+                  Henrique Gilberto Langa
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  Filho de Gilberto José Guilherme Henrique Langa e Victória
+                  Alson Chembene
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -478,7 +586,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Música do dia */}
+      {/* Programa do dia */}
       <section className="border-y border-border bg-secondary/30 px-6 py-24">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.35em] text-primary">
@@ -488,8 +596,8 @@ function Index() {
             Programa do dia
           </h2>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            <DetailCard label="Data" value="12 · 09 · 2026" sub="Sábado" />
-            <DetailCard label="Início" value="10:00" sub="Cerimónia Religiosa" />
+            <DetailCard label="Data" value="05 · 12 · 2026" sub="Sábado" />
+            <DetailCard label="Início" value="09:00" sub="Cerimónia Religiosa" />
             <DetailCard label="Cidade" value="Maputo" sub="Moçambique" />
           </div>
 
@@ -579,8 +687,8 @@ function Index() {
             RSVP
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Confirme até <strong className="text-foreground">05 de setembro de 2026</strong> por
-            WhatsApp.
+            Confirme a sua presença por{" "}
+            <strong className="text-foreground">WhatsApp</strong>.
           </p>
         </div>
 
@@ -679,8 +787,8 @@ function Index() {
               Felicitações aos noivos
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Deixe uma mensagem para Kelvin &amp; Shelsea — ela será enviada para os
-              noivos e ficará guardada aqui no mural.
+              Deixe uma mensagem para Adelina &amp; Henrique — ela será enviada
+              para os noivos e ficará guardada aqui no mural.
             </p>
           </Reveal>
 
@@ -746,10 +854,10 @@ function Index() {
       <footer className="border-t border-border px-6 py-16">
         <div className="mx-auto max-w-4xl text-center">
           <p className="animate-heart-beat inline-block font-serif text-3xl font-light text-foreground">
-            Kelvin &amp; Shelsea
+            Adelina &amp; Henrique
           </p>
           <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            12 · 09 · 2026 — Maputo
+            05 · 12 · 2026 — Maputo
           </p>
           <p className="mt-6 text-xs text-muted-foreground">Contamos com a sua presença.</p>
 
@@ -866,7 +974,7 @@ function StoryGallery() {
         ))}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
         <p className="absolute inset-x-0 bottom-10 text-center font-serif text-2xl font-light italic text-white/95">
-          Kelvin &amp; Shelsea
+          Adelina &amp; Henrique
         </p>
         <div className="absolute inset-x-0 bottom-5 flex items-center justify-center gap-2">
           {GALLERY.map((img, i) => (
@@ -885,4 +993,3 @@ function StoryGallery() {
     </div>
   );
 }
-
