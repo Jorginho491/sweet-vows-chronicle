@@ -1,21 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import capa from "../assets/capa-adelina-henrique.jpg.asset.json";
-import casal1 from "../assets/casal-1.jpg.asset.json";
-import casal2 from "../assets/casal-2.jpg.asset.json";
-import casal3 from "../assets/casal-3.jpg.asset.json";
-import casal4 from "../assets/casal-4.jpg.asset.json";
+import gA from "../assets/adelina-galeria-a.jpg.asset.json";
+import gB from "../assets/adelina-galeria-b.jpg.asset.json";
+import gC from "../assets/adelina-galeria-c.jpg.asset.json";
+import gD from "../assets/adelina-galeria-d_2.jpg.asset.json";
+import gE from "../assets/adelina-galeria-e.jpg.asset.json";
 
 const WHATSAPP = "258849889889";
 const WEDDING_DATE = new Date("2026-12-05T09:00:00");
 const MUSIC_DELAY_MS = 20000;
 const GREETINGS_KEY = "adelina-henrique-felicitacoes";
 
-// Fotos provisórias do ensaio — serão substituídas pelas fotos oficiais do casal.
 const GALLERY = [
-  { url: capa.url, alt: "Adelina e Henrique no ensaio pré-casamento" },
-  { url: casal3.url, alt: "Momento especial do casal (foto provisória)" },
-  { url: casal4.url, alt: "Casal entre a vegetação (foto provisória)" },
+  { url: gA.url, alt: "Adelina e Henrique a rir, de mãos dadas, junto ao lago" },
+  { url: gB.url, alt: "Adelina e Henrique no jardim, ao lado do lago" },
+  { url: gC.url, alt: "Adelina e Henrique a caminhar entre as palmeiras do jardim" },
+  { url: gD.url, alt: "Adelina debruçada sobre Henrique, sentado num tronco" },
+  { url: gE.url, alt: "Adelina e Henrique abraçados debaixo da árvore" },
 ];
 
 const PROGRAM = [
