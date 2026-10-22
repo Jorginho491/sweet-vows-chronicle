@@ -10,43 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdelinaHenriqueRouteImport } from './routes/adelina-henrique'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdelinaHenriqueRoute = AdelinaHenriqueRouteImport.update({
-  id: '/adelina-henrique',
-  path: '/adelina-henrique',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/adelina-henrique': typeof AdelinaHenriqueRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/adelina-henrique': typeof AdelinaHenriqueRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/adelina-henrique': typeof AdelinaHenriqueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/adelina-henrique'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/adelina-henrique'
-  id: '__root__' | '/' | '/adelina-henrique'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdelinaHenriqueRoute: typeof AdelinaHenriqueRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,19 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/adelina-henrique': {
-      id: '/adelina-henrique'
-      path: '/adelina-henrique'
-      fullPath: '/adelina-henrique'
-      preLoaderRoute: typeof AdelinaHenriqueRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdelinaHenriqueRoute: AdelinaHenriqueRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
