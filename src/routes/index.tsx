@@ -28,10 +28,10 @@ const PROGRAM = [
     detail: "Maputo",
   },
   {
-    time: "—",
+    time: "11:30",
     title: "Cerimónia Civil",
-    place: "Sé Catedral",
-    detail: "Após a cerimónia religiosa",
+    place: "Palácio dos Casamentos",
+    detail: "Cerimónia civil",
   },
   {
     time: "12:00",
@@ -75,8 +75,14 @@ const PLACES = [
   {
     name: "Igreja Sé Catedral",
     address: "Praça da Independência, Maputo",
-    note: "Cerimónia Religiosa & Civil · 09:00",
+    note: "Cerimónia Religiosa · 09:00",
     maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
+  },
+  {
+    name: "Palácio dos Casamentos",
+    address: "Maputo",
+    note: "Cerimónia Civil · 11:30",
+    maps: "https://www.google.com/maps/search/?api=1&query=Pal%C3%A1cio%20dos%20Casamentos%20Maputo",
   },
   {
     name: "Salão Villa Luísa",
@@ -88,15 +94,15 @@ const PLACES = [
 
 const VERSES = [
   {
-    text: "«Por esta razão, o homem deixará pai e mãe e se unirá à sua mulher, e os dois se tornarão uma só carne.»",
+    text: "Deus uniu os nossos caminhos e, sobre a Sua bênção, uniremos as nossas vidas para sempre.",
     ref: "Mateus 19:5",
   },
   {
-    text: "«…eis que o Senhor está entre mim e ti, eternamente.»",
+    text: "O amor uniu-nos e, diante de Deus e das nossas famílias, diremos «sim». «…eis que o Senhor está entre mim e ti, eternamente.»",
     ref: "1 Samuel 20:23",
   },
   {
-    text: "«Para onde tu fores, eu irei; onde tu repousares, eu repousarei. O teu povo será o meu povo, e o teu Deus será o meu Deus.»",
+    text: "«Deus mudou o teu caminho até juntares com o meu e guardou a tua vida separando-a para mim. Para onde fores eu irei; onde tu repousares, repousarei. Teu Deus será o meu Deus. Teu caminho o meu será.»",
     ref: "Rute 1:16-17",
   },
 ];
