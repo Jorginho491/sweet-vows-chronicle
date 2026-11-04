@@ -651,7 +651,7 @@ function AdelinaHenrique() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {PLACES.map((p, i) => (
             <Reveal key={p.name} delay={i * 150}>
               <article className="group flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
