@@ -7,7 +7,7 @@ import gC from "../assets/adelina-galeria-c.jpg.asset.json";
 import gD from "../assets/adelina-galeria-d_2.jpg.asset.json";
 import gE from "../assets/adelina-galeria-e.jpg.asset.json";
 
-const WHATSAPP = "258849889889";
+const WHATSAPP = "258870446552";
 const WEDDING_DATE = new Date("2026-12-05T09:00:00");
 const MUSIC_DELAY_MS = 20000;
 const GREETINGS_KEY = "adelina-henrique-felicitacoes";
@@ -30,7 +30,7 @@ const PROGRAM = [
   {
     time: "11:30",
     title: "Cerimónia Civil",
-    place: "Palácio dos Casamentos",
+    place: "Local a confirmar",
     detail: "Cerimónia civil",
   },
   {
@@ -79,10 +79,10 @@ const PLACES = [
     maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
   },
   {
-    name: "Palácio dos Casamentos",
-    address: "Maputo",
+    name: "Cerimónia Civil",
+    address: "Local a confirmar",
     note: "Cerimónia Civil · 11:30",
-    maps: "https://www.google.com/maps/search/?api=1&query=Pal%C3%A1cio%20dos%20Casamentos%20Maputo",
+    maps: null,
   },
   {
     name: "Salão Villa Luísa",
@@ -668,15 +668,17 @@ function AdelinaHenrique() {
                 <p className="mt-1 text-[0.65rem] uppercase tracking-[0.25em] text-primary">
                   {p.note}
                 </p>
-                <a
-                  href={p.maps}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                >
-                  Ver direções
-                  <span aria-hidden>→</span>
-                </a>
+                {p.maps && (
+                  <a
+                    href={p.maps}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-input px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Ver direções
+                    <span aria-hidden>→</span>
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}
@@ -773,7 +775,7 @@ function AdelinaHenrique() {
           <p className="text-center text-xs text-muted-foreground">
             WhatsApp:{" "}
             <a className="text-foreground underline" href={`https://wa.me/${WHATSAPP}`}>
-              84 988 9889
+              +258 87 044 6552
             </a>
           </p>
         </div>
