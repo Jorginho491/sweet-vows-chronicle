@@ -28,9 +28,9 @@ const PROGRAM = [
     detail: "Maputo",
   },
   {
-    time: "11:30",
+    time: "Por anunciar",
     title: "Cerimónia Civil",
-    place: "Local a confirmar",
+    place: "Local e hora por anunciar",
     detail: "Cerimónia civil",
   },
   {
@@ -80,8 +80,8 @@ const PLACES = [
   },
   {
     name: "Cerimónia Civil",
-    address: "Local a confirmar",
-    note: "Cerimónia Civil · 11:30",
+    address: "Local e hora por anunciar",
+    note: "Local e hora por anunciar",
     maps: null,
   },
   {
