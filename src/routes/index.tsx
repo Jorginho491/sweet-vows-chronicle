@@ -4,7 +4,6 @@ import capa from "../assets/capa-adelina-henrique.jpg.asset.json";
 import gA from "../assets/adelina-galeria-a.jpg.asset.json";
 import gB from "../assets/adelina-galeria-b.jpg.asset.json";
 import gC from "../assets/adelina-galeria-c.jpg.asset.json";
-import gD from "../assets/adelina-galeria-d_2.jpg.asset.json";
 import gE from "../assets/adelina-galeria-e.jpg.asset.json";
 
 const WHATSAPP = "258870446552";
@@ -16,7 +15,6 @@ const GALLERY = [
   { url: gA.url, alt: "Adelina e Henrique a rir, de mãos dadas, junto ao lago" },
   { url: gB.url, alt: "Adelina e Henrique no jardim, ao lado do lago" },
   { url: gC.url, alt: "Adelina e Henrique a caminhar entre as palmeiras do jardim" },
-  { url: gD.url, alt: "Adelina debruçada sobre Henrique, sentado num tronco" },
   { url: gE.url, alt: "Adelina e Henrique abraçados debaixo da árvore" },
 ];
 
@@ -28,10 +26,10 @@ const PROGRAM = [
     detail: "Maputo",
   },
   {
-    time: "Por anunciar",
+    time: "13:00",
     title: "Cerimónia Civil",
-    place: "Local e hora por anunciar",
-    detail: "Cerimónia civil",
+    place: "Salão Villa Luísa",
+    detail: "Maputo",
   },
   {
     time: "12:00",
@@ -79,15 +77,9 @@ const PLACES = [
     maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
   },
   {
-    name: "Cerimónia Civil",
-    address: "Local e hora por anunciar",
-    note: "Local e hora por anunciar",
-    maps: null,
-  },
-  {
     name: "Salão Villa Luísa",
     address: "Maputo",
-    note: "Welcome drink, fotos, copo d'água & festa",
+    note: "Cerimónia Civil · 13:00 · Recepção",
     maps: "https://www.google.com/maps/search/?api=1&query=Villa%20Lu%C3%ADsa%20Maputo",
   },
 ];
@@ -102,7 +94,7 @@ const VERSES = [
     ref: "1 Samuel 20:23",
   },
   {
-    text: "«Deus mudou o teu caminho até juntares com o meu e guardou a tua vida separando-a para mim. Para onde fores eu irei; onde tu repousares, repousarei. Teu Deus será o meu Deus. Teu caminho o meu será.»",
+    text: "Deus mudou o teu caminho até juntares com o meu e guardou a tua vida separando-a para mim. Para onde fores eu irei. Onde tu repousares, repousarei. Teu Deus será o meu Deus. Teu caminho o meu será.",
     ref: "Rute 1:16-17",
   },
 ];
@@ -189,9 +181,9 @@ function IntroOverlay({
         <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
           Adelina &amp; Henrique
         </p>
-        <h1 className="mt-6 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
+        <h1 className="mt-6 font-serif text-3xl font-light leading-tight text-white sm:text-6xl md:text-7xl">
           Adelina
-          <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
+          <span className="mx-1 align-middle font-serif text-2xl italic text-white/70 sm:mx-3 sm:text-5xl">
             &amp;
           </span>
           Henrique
@@ -405,9 +397,9 @@ function AdelinaHenrique() {
             </p>
           </Reveal>
           <Reveal delay={200}>
-            <h1 className="mt-8 font-serif text-6xl font-light leading-none tracking-tight text-white sm:text-8xl md:text-9xl">
+            <h1 className="mt-8 font-serif text-3xl font-light leading-tight text-white sm:text-6xl md:text-7xl">
               Adelina
-              <span className="mx-3 align-middle font-serif text-4xl italic text-white/70 sm:text-6xl">
+              <span className="mx-1 align-middle font-serif text-2xl italic text-white/70 sm:mx-3 sm:text-5xl">
                 &amp;
               </span>
               Henrique
@@ -512,17 +504,11 @@ function AdelinaHenrique() {
               A nossa história
             </p>
             <h2 className="mt-4 font-serif text-4xl font-light leading-tight text-foreground sm:text-5xl">
-              Deus uniu os nossos caminhos
+              Uma história para celebrar
             </h2>
             <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-              Deus uniu os nossos caminhos e, sobre a Sua bênção, uniremos as
-              nossas vidas para sempre. O amor uniu-nos e, diante de Deus e das
-              nossas famílias, diremos «sim».
-            </p>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              Agora, rodeados de quem amam, escolhem dizer «sim» diante de Deus
-              e da família. Este convite é o nosso pedido para que estejas
-              connosco neste dia.
+              Hoje, Adelina e Henrique celebram o amor e dão início a uma nova
+              etapa, rodeados pelas pessoas que fazem parte das suas vidas.
             </p>
           </Reveal>
         </div>
@@ -651,7 +637,7 @@ function AdelinaHenrique() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {PLACES.map((p, i) => (
             <Reveal key={p.name} delay={i * 150}>
               <article className="group flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
