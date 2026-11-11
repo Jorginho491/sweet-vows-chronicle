@@ -8,14 +8,29 @@ import gE from "../assets/adelina-galeria-e.jpg.asset.json";
 
 const WHATSAPP = "258870446552";
 const WEDDING_DATE = new Date("2026-12-05T09:00:00");
-const MUSIC_DELAY_MS = 20000;
 const GREETINGS_KEY = "adelina-henrique-felicitacoes";
+const ASSET_ORIGIN = "https://sweet-vows-chronicle.lovable.app";
+const resolveAssetUrl = (url: string) => new URL(url, ASSET_ORIGIN).href;
+const COVER_URL = resolveAssetUrl(capa.url);
+const MUSIC_URL = "/musica.mp3";
 
 const GALLERY = [
-  { url: gA.url, alt: "Adelina e Henrique a rir, de mãos dadas, junto ao lago" },
-  { url: gB.url, alt: "Adelina e Henrique no jardim, ao lado do lago" },
-  { url: gC.url, alt: "Adelina e Henrique a caminhar entre as palmeiras do jardim" },
-  { url: gE.url, alt: "Adelina e Henrique abraçados debaixo da árvore" },
+  {
+    url: resolveAssetUrl(gA.url),
+    alt: "Adelina e Henrique a rir, de mãos dadas, junto ao lago",
+  },
+  {
+    url: resolveAssetUrl(gB.url),
+    alt: "Adelina e Henrique no jardim, ao lado do lago",
+  },
+  {
+    url: resolveAssetUrl(gC.url),
+    alt: "Adelina e Henrique a caminhar entre as palmeiras do jardim",
+  },
+  {
+    url: resolveAssetUrl(gE.url),
+    alt: "Adelina e Henrique abraçados debaixo da árvore",
+  },
 ];
 
 const PROGRAM = [
@@ -26,20 +41,20 @@ const PROGRAM = [
     detail: "Maputo",
   },
   {
-    time: "11:30",
-    title: "Cerimónia Civil",
-    place: "Palácio dos Casamentos",
+    time: "12:00",
+    title: "Welcome drink",
+    place: "Salão Villa Luísa",
     detail: "Maputo",
   },
   {
     time: "12:00",
-    title: "Welcome drink",
+    title: "Sessão de fotos",
     place: "Salão Villa Luísa",
     detail: "Recepção dos convidados",
   },
   {
-    time: "12:00",
-    title: "Sessão de fotos",
+    time: "13:00",
+    title: "Cerimónia Civil",
     place: "Salão Villa Luísa",
     detail: "Registos do grande dia",
   },
@@ -77,15 +92,9 @@ const PLACES = [
     maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
   },
   {
-    name: "Palácio dos Casamentos",
-    address: "Maputo",
-    note: "Cerimónia Civil · 11:30",
-    maps: "https://www.google.com/maps/search/?api=1&query=Pal%C3%A1cio%20dos%20Casamentos%20Maputo",
-  },
-  {
     name: "Salão Villa Luísa",
     address: "Maputo",
-    note: "A partir das 12:00 · Programa e recepção",
+    note: "Cerimónia Civil · 13:00 | Programa e recepção a partir das 12:00",
     maps: "https://www.google.com/maps/search/?api=1&query=Villa%20Lu%C3%ADsa%20Maputo",
   },
 ];
@@ -178,7 +187,7 @@ function IntroOverlay({
       aria-hidden={opened}
     >
       <img
-        src={capa.url}
+        src={COVER_URL}
         alt=""
         className="animate-soft-zoom absolute inset-0 -z-10 h-full w-full object-cover object-[50%_30%]"
       />
@@ -208,7 +217,7 @@ function IntroOverlay({
           Abrir convite
         </button>
         <p className="mt-4 text-[0.6rem] uppercase tracking-[0.2em] text-white/60">
-          Toque para abrir · a música começa em instantes
+          Toque para abrir · a música começa ao abrir
         </p>
       </div>
     </div>
@@ -216,33 +225,40 @@ function IntroOverlay({
 }
 
 function MusicButton({
-  iframeRef,
   isPlaying,
+  musicError,
   onToggle,
 }: {
-  iframeRef: React.RefObject<HTMLIFrameElement | null>;
   isPlaying: boolean;
+  musicError: string | null;
   onToggle: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-label={isPlaying ? "Pausar música" : "Tocar música"}
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-black/65 px-3.5 py-2.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-black/85"
-    >
-      {isPlaying ? (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
-          <rect x="6" y="4" width="4" height="16" rx="1" />
-          <rect x="14" y="4" width="4" height="16" rx="1" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
-          <path d="M8 5v14l11-7z" />
-        </svg>
+    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+      {musicError && (
+        <p role="alert" className="max-w-64 rounded bg-black/80 px-3 py-2 text-xs text-white">
+          {musicError}
+        </p>
       )}
-      <span>{isPlaying ? "Pausar" : "Tocar"}</span>
-    </button>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-label={isPlaying ? "Pausar música" : "Tocar música"}
+        className="flex items-center gap-2 rounded-full bg-black/65 px-3.5 py-2.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-black/85"
+      >
+        {isPlaying ? (
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+            <rect x="6" y="4" width="4" height="16" rx="1" />
+            <rect x="14" y="4" width="4" height="16" rx="1" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        )}
+        <span>{isPlaying ? "Pausar" : "Tocar"}</span>
+      </button>
+    </div>
   );
 }
 
@@ -275,8 +291,8 @@ function AdelinaHenrique() {
   const [attending, setAttending] = useState<"sim" | "nao" | null>(null);
   const [opened, setOpened] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const autoStartRef = useRef<number | null>(null);
+  const [musicError, setMusicError] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const countdown = useCountdown(WEDDING_DATE);
 
   const [greetings, setGreetings] = useState<Greeting[]>([]);
@@ -291,27 +307,6 @@ function AdelinaHenrique() {
       /* ignore */
     }
   }, []);
-
-  // A música começa cerca de 20 segundos depois de abrir o convite.
-  useEffect(() => {
-    if (!opened) return;
-    autoStartRef.current = window.setTimeout(() => {
-      autoStartRef.current = null;
-      const iframe = iframeRef.current;
-      if (!iframe?.contentWindow) return;
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: "command", func: "playVideo", args: "" }),
-        "*",
-      );
-      setIsPlaying(true);
-    }, MUSIC_DELAY_MS);
-    return () => {
-      if (autoStartRef.current !== null) {
-        clearTimeout(autoStartRef.current);
-        autoStartRef.current = null;
-      }
-    };
-  }, [opened]);
 
   const submitGreeting = () => {
     if (!gName.trim() || !gMessage.trim()) return;
@@ -351,46 +346,61 @@ function AdelinaHenrique() {
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const playMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    setMusicError(null);
+    void audio.play().catch((error: unknown) => {
+      setIsPlaying(false);
+      setMusicError("Não foi possível tocar a música. Use o botão Tocar para tentar novamente.");
+      console.error("Falha ao reproduzir a música do convite.", error);
+    });
+  };
+
   const toggleMusic = () => {
-    if (autoStartRef.current !== null) {
-      clearTimeout(autoStartRef.current);
-      autoStartRef.current = null;
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      playMusic();
+    } else {
+      audio.pause();
     }
-    const iframe = iframeRef.current;
-    if (!iframe?.contentWindow) return;
-    const command = isPlaying ? "pauseVideo" : "playVideo";
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: "command", func: command, args: "" }),
-      "*",
-    );
-    setIsPlaying((p) => !p);
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <IntroOverlay opened={opened} onOpen={() => setOpened(true)} />
-      {opened && (
-        <iframe
-          ref={iframeRef}
-          width="0"
-          height="0"
-          src="https://www.youtube.com/embed/aMoDRNT6fpc?mute=0&playsinline=1&rel=0&loop=1&playlist=aMoDRNT6fpc&enablejsapi=1"
-          title="Meu Amor — Lokua Kanza"
-          allow="autoplay; encrypted-media; picture-in-picture; web-share"
-          className="pointer-events-none fixed bottom-0 right-0 -z-50 opacity-0"
-          loading="eager"
-        />
-      )}
+      <audio
+        ref={audioRef}
+        src={MUSIC_URL}
+        loop
+        preload="auto"
+        onPlay={() => {
+          setIsPlaying(true);
+          setMusicError(null);
+        }}
+        onPause={() => setIsPlaying(false)}
+        onError={() => {
+          setIsPlaying(false);
+          setMusicError("Não foi possível carregar o ficheiro de música.");
+        }}
+      />
+      <IntroOverlay
+        opened={opened}
+        onOpen={() => {
+          setOpened(true);
+          playMusic();
+        }}
+      />
       <MusicButton
-        iframeRef={iframeRef}
         isPlaying={isPlaying}
+        musicError={musicError}
         onToggle={toggleMusic}
       />
 
       {/* Hero */}
       <header className="relative isolate min-h-[92vh] w-full overflow-hidden">
         <img
-          src={capa.url}
+          src={COVER_URL}
           alt="Adelina Zacarias Machai e Henrique Gilberto Langa, os noivos, no ensaio pré-casamento"
           className="animate-soft-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_30%]"
         />
@@ -399,7 +409,7 @@ function AdelinaHenrique() {
         <div className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 py-24 text-center [&_.reveal.is-visible]:[animation-duration:1.2s]">
           <Reveal>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
-              Com alegria, convidamos você
+              Com alegria, convidamos você para celebrar conosco
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -948,7 +958,10 @@ function StoryGallery() {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setActive((i) => (i + 1) % GALLERY.length), 4200);
+    const id = setInterval(
+      () => setActive((current) => (current + 1) % GALLERY.length),
+      4200,
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -968,7 +981,7 @@ function StoryGallery() {
             className={`absolute inset-0 h-full w-full object-cover object-[50%_30%] transition-all duration-[1600ms] ease-out ${
               i === active
                 ? "scale-100 opacity-100 grayscale-0"
-                : "scale-110 opacity-0 grayscale"
+                : "pointer-events-none scale-110 opacity-0 grayscale"
             }`}
           />
         ))}
@@ -982,6 +995,7 @@ function StoryGallery() {
               key={img.url}
               type="button"
               aria-label={`Ver foto ${i + 1}`}
+              aria-pressed={i === active}
               onClick={() => setActive(i)}
               className={`h-1.5 rounded-full transition-all duration-500 ${
                 i === active ? "w-7 bg-white" : "w-1.5 bg-white/50 hover:bg-white/80"
