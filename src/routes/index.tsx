@@ -66,7 +66,7 @@ const PROGRAM = [
   },
   {
     time: "17:00",
-    title: "Abertura do Sala",
+    title: "Abertura da Sala",
     place: "Salão Villa Luísa",
     detail: "Festa com os convidados",
   },
