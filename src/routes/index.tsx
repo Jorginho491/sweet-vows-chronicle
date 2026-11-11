@@ -26,25 +26,25 @@ const PROGRAM = [
     detail: "Maputo",
   },
   {
-    time: "13:00",
+    time: "11:30",
     title: "Cerimónia Civil",
-    place: "Salão Villa Luísa",
+    place: "Palácio dos Casamentos",
     detail: "Maputo",
   },
   {
     time: "12:00",
-    title: "Welcome Drink",
+    title: "Welcome drink",
     place: "Salão Villa Luísa",
     detail: "Recepção dos convidados",
   },
   {
     time: "12:00",
-    title: "Sessão de Fotos",
+    title: "Sessão de fotos",
     place: "Salão Villa Luísa",
     detail: "Registos do grande dia",
   },
   {
-    time: "13:00",
+    time: "14:00",
     title: "Copo d'Água",
     place: "Salão Villa Luísa",
     detail: "Recepção",
@@ -56,7 +56,7 @@ const PROGRAM = [
     detail: "Festa com os convidados",
   },
   {
-    time: "20:00",
+    time: "21:00",
     title: "Lançamento do Buquê",
     place: "Salão Villa Luísa",
     detail: "Momento especial",
@@ -77,9 +77,15 @@ const PLACES = [
     maps: "https://www.google.com/maps/search/?api=1&query=S%C3%A9%20Catedral%20de%20Maputo",
   },
   {
+    name: "Palácio dos Casamentos",
+    address: "Maputo",
+    note: "Cerimónia Civil · 11:30",
+    maps: "https://www.google.com/maps/search/?api=1&query=Pal%C3%A1cio%20dos%20Casamentos%20Maputo",
+  },
+  {
     name: "Salão Villa Luísa",
     address: "Maputo",
-    note: "Cerimónia Civil · 13:00 · Recepção",
+    note: "A partir das 12:00 · Programa e recepção",
     maps: "https://www.google.com/maps/search/?api=1&query=Villa%20Lu%C3%ADsa%20Maputo",
   },
 ];
@@ -507,8 +513,8 @@ function AdelinaHenrique() {
               Uma história para celebrar
             </h2>
             <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-              Hoje, Adelina e Henrique celebram o amor e dão início a uma nova
-              etapa, rodeados pelas pessoas que fazem parte das suas vidas.
+              Deus uniu os nossos caminhos e, sob a Sua bênção, uniremos as
+              nossas vidas para sempre.
             </p>
           </Reveal>
         </div>
@@ -637,7 +643,7 @@ function AdelinaHenrique() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {PLACES.map((p, i) => (
             <Reveal key={p.name} delay={i * 150}>
               <article className="group flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
