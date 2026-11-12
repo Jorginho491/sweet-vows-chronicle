@@ -409,7 +409,7 @@ function AdelinaHenrique() {
         <div className="relative flex min-h-[92vh] flex-col items-center justify-center px-6 py-24 text-center [&_.reveal.is-visible]:[animation-duration:1.2s]">
           <Reveal>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.45em] text-white/70">
-              Com alegria, convidamos você para celebrar conosco
+              Têm a honra e a alegria de vos convidar para celebrar connosco.
             </p>
           </Reveal>
           <Reveal delay={200}>
